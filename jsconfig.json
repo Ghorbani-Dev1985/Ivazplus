@@ -11,7 +11,7 @@
       "@/UI/*" : ["src/UI/*"],
       "@/Server/*" : ["src/Server/*"],
       "@/Api/*" : ["src/Api/*"],
-      "@/Styles/*" : ["src/Styles/*"],
+      "@/Styles/*" : ["src/styles/*"],
       "@/Images/*" : ["public/*"],
       "@/Fonts/*" : ["src/Assets/Fonts/*"],
     },

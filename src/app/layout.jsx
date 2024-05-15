@@ -1,14 +1,14 @@
 "use client"
 import "@/Styles/globals.css";
-import Header from "@/UI/Header";
-import PreFooter from "@/UI/PreFooter";
-import Footer from "@/UI/Footer";
-import {IranYekan} from '../../Constants/LocalFonts'
-import {YekanBakh} from '../../Constants/LocalFonts'
-import AuthProvider from "src/Context/AuthContext";
+
+
+import {IranYekan} from '../constants/LocalFonts'
+import {YekanBakh} from '../constants/LocalFonts'
+
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
+import Header from "@/UI/Header/Header";
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={`${IranYekan.variable} ${YekanBakh.variable} font-sans`}>
@@ -30,17 +30,16 @@ export default function RootLayout({ children }) {
           `,
         }}
       />
+      <link rel="icon" href="images/logo/logo.svg" type="image/svg" />
       </head>
       <body>
-        <AuthProvider>
         <NextUIProvider>
         <Toaster />
         <Header />
-        {children}
-        <PreFooter />
-        <Footer />
+        <main>{children}</main>
+        {/* <PreFooter /> */}
+        {/* <Footer /> */}
         </NextUIProvider>
-        </AuthProvider>
       </body>
     </html>
   );

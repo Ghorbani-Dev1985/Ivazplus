@@ -14,7 +14,7 @@
         @apply list-none
       }
       body {
-        @apply text-secondary bg-white h-full font-IranYekan text-lg overflow-x-hidden scroll-smooth;
+        @apply text-zinc-700 bg-white h-full font-IranYekan text-base overflow-x-hidden scroll-smooth;
       }
       h1,h2,h3,h4,h5,h6{
         @apply font-YekanBakh font-black
@@ -38,4 +38,17 @@
   .ql-editor {
     direction: rtl;
     text-align: right !important;
+  }
+
+  .drawer-animated-slide-in {
+    animation: slide-in 0.5s forwards;
+  }
+  
+  @keyframes slide-in {
+    from {
+      right: -30rem;
+    }
+    to {
+      right: 0;
+    }
   }
