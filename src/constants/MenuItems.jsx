@@ -82,12 +82,14 @@ const MenuItems = [
     {
         id: 3,
         mainNav: "ست زنانه",
-        mainHref: "womanSet"
+        mainHref: "womanSet",
+        subNav: []
     },
     {
         id: 4,
         mainNav: "شلوار زنانه",
-        mainHref: "womanPants"
+        mainHref: "womanPants",
+        subNav: []
     },
     {
         id: 5,

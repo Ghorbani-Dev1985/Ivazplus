@@ -4,7 +4,7 @@ const Search = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     return ( 
           <>
-             <Button onPress={onOpen} className="flex-center bg-transparent gap-2">
+             <Button onPress={onOpen} className="flex-center bg-transparent px-0 min-w-11">
              <Image
               width={24}
               height={24}

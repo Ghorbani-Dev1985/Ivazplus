@@ -8,6 +8,7 @@ import Search from "./Search";
 import { Divider } from "@nextui-org/react";
 import { HiOutlineUser } from "react-icons/hi2";
 import ShoppingCart from "./ShoppingCart";
+import MobileNav from "./MobileNav";
 const Header = () => {
     const pathname = usePathname();
   return (
@@ -35,12 +36,14 @@ const Header = () => {
               placeholder="blur"
               blurDataURL="images/logo/logo.svg"
               src="images/logo/logo.svg"
-              objectFit={true}
+              className="h-12 md:h-auto"
             />
             {/* Icons */}
-            <section className="flex-center gap-3">
+            <section className="flex-center gap-x-1.5 md:gap-x-3">
+                {/* MobileNav */}
+                <MobileNav />
                 {/* Search */}
-               <div className="flex-center h-6 gap-x-2">
+               <div className="flex-center h-6 md:gap-x-2">
                   <Search />
                   <Divider orientation="vertical"/>
                </div>
