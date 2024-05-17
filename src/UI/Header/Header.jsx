@@ -19,10 +19,11 @@ const Header = () => {
         {/* DesktopNav */}
         <div className="w-full flex-between py-4">
           <nav className="hidden lg:flex-center gap-x-3 text-xs font-bold">
-            {MenuItems.map(({ id, mainNav, mainHref, subNav }) => {
+            <ul className="flex items-center gap-1.5">
+               {MenuItems.map(({ id, mainNav, mainHref, subNav }) => {
               return (
                 <React.Fragment key={id}>
-                  <Link
+                  <li className="flex items-center group"><Link
                     href={mainHref}
                     onMouseEnter={() => setSubmenuImg("")}
                     className={`
@@ -30,15 +31,16 @@ const Header = () => {
                       pathname === mainHref
                         ? "text-primary font-bold"
                         : "text-zinc-700"
-                    } inline-flex items-center group`}
+                    } inline-flex items-center `}
                   >
-                    {mainNav}
+                    
+                    {mainNav} </Link>
                     {subNav.length >= 1 && (
                       <>
                         <BiChevronDown className="size-5" />
-                        <div className="relative">
+                        <p className="relative">
                           <BiCaretUp className="size-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible absolute left-11 top-11" />
-                        </div>
+                        </p>
                         <div className="absolute right-0 top-full min-h-[414px] z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible w-full px-6 space-y-8 bg-white shadow-lg tracking-normal border-t border-primary rounded-br-xl rounded-bl-xl transition-all delay-75 child:flex child:justify-between child:transition-colors child-hover:text-orange-300">
                           <div>
                             <div className="w-1/5 flex flex-col gap-y-2.5 border-l min-h-[414px] py-5 pl-6">
@@ -62,7 +64,7 @@ const Header = () => {
                                 );
                               })}
                             </div>
-                            <div className="w-3/4 flex justify-end child:rounded-2xl py-5">
+                            <p className="w-3/4 flex justify-end child:rounded-2xl py-5">
                               {submenuImg && (
                                 <Image
                                   width={302}
@@ -74,15 +76,17 @@ const Header = () => {
                                   className=""
                                 />
                               )}
-                            </div>
+                            </p>
                           </div>
                         </div>
                       </>
                     )}
-                  </Link>
+                 </li>
                 </React.Fragment>
               );
             })}
+            </ul>
+           
             <Link
               href="https://www.google.com/maps/place/%D8%A7%DB%8C%D9%88%D8%A7%D8%B2+%D9%BE%D9%84%D8%A7%D8%B3%E2%80%AD/@37.4752277,49.4553436,17z/data=!3m1!4b1!4m6!3m5!1s0x401feb36d5c9f789:0x11d5407d8859e1e2!8m2!3d37.4752277!4d49.4553436!16s%2Fg%2F11fq4k68s9?entry=ttu"
               target="_blank"

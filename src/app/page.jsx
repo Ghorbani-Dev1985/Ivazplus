@@ -1,3 +1,5 @@
+import Categories from "@/Features/Home/Categories";
+import HeroHeader from "@/Features/Home/HeroHeder";
 
 
 export const metadata = {
@@ -11,7 +13,8 @@ const HomePage = async () => {
  
   return (
     <>
-    main
+      <HeroHeader />
+      <Categories />
       {/* <main className="min-h-screen">
         <Slider />
         <section className="container">

@@ -56,7 +56,7 @@ module.exports = {
       },
       backgroundImage: {
         'paternBg' : 'url("/Footer/footerPatern.png")',
-         'Footer': 'linear-gradient(rgb(61,61,61), rgba(30,30,30,0.83)) , url("/Footer/footerPatern.png")'
+         'categories': 'linear-gradient(rgba(109,44,136,0) 0,rgba(109,44,136,0) 47.27%,#6d2c88 100%)'
     },
     },
     screens: {
