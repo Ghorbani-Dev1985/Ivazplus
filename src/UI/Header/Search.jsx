@@ -1,7 +1,6 @@
 import {
   Modal,
   ModalContent,
-  ModalBody,
   Button,
   useDisclosure,
 } from "@nextui-org/react";
@@ -18,9 +17,9 @@ const Search = () => {
   } = useForm();
   return (
     <>
-      <Button
-        onPress={onOpen}
-        className="flex-center bg-transparent px-0 min-w-11"
+      <button
+        onClick={onOpen}
+        className="flex-center gap-x-1 bg-transparent px-0 min-w-11"
       >
         <Image
           width={24}
@@ -32,7 +31,7 @@ const Search = () => {
           objectFit={true}
         />
         <span className="hidden md:block">جستجو</span>
-      </Button>
+      </button>
       <Modal
         backdrop="opaque"
         isOpen={isOpen}
@@ -42,7 +41,7 @@ const Search = () => {
         classNames={{
           wrapper: "items-center",
           body: "py-6",
-          backdrop: "bg-primary-200/50 backdrop-opacity-40",
+          backdrop: "bg-primary-200/70 backdrop-opacity-50",
           closeButton: "hidden",
         }}
       >

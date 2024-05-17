@@ -16,7 +16,7 @@ const MobileNav = () => {
     content: "px-2",
   };
   return (
-    <section className="block md:hidden">
+    <section className="block lg:hidden">
       <Drawer textIcon={false} icon={<BiMenu className="size-8" />}>
         <div className="flex items-center flex-col gap-y-4">
           <Image
@@ -30,17 +30,20 @@ const MobileNav = () => {
           />
           <Divider className="mb-8" />
         </div>
-        <div className="px-2">
-        <Link
-          href="/"
-          className={`
-            ${pathname === "/" ? "text-primary font-bold" : "text-zinc-700"} w-full bg-slate-50 h-12 px-2 flex items-center rounded-lg`
-          }
-        >
-          صفحه اصلی
-        </Link>
-        </div>
         <Accordion showDivider={false} itemClasses={itemClasses}>
+          <AccordionItem
+            title="صفحه اصلی"
+            indicator={<HiChevronRight className="size-5" />}
+          >
+            <Link
+              href="/"
+              className={
+                pathname === "/" ? "text-primary font-bold" : "text-zinc-700"
+              }
+            >
+              صفحه اصلی
+            </Link>
+          </AccordionItem>
           {MenuItems.map(({ id, mainNav, mainHref, subNav }) => {
             return subNav.length > 0 ? (
               <AccordionItem
@@ -49,44 +52,55 @@ const MobileNav = () => {
                 title={mainNav}
                 indicator={<HiChevronRight className="size-5" />}
               >
-                  <div className="flex flex-col gap-y-5 line-clamp-1">
-                {subNav.map(({ id, title, href }) => {
-                  return (
-                    <React.Fragment key={id}>
-                      <Link
-                        href={href}
-                        className={
-                          pathname === href
-                            ? "text-primary font-bold"
-                            : "text-zinc-700"
-                        }
-                      >
-                        {title}
-                      </Link>
-                    </React.Fragment>
-                  );
-                })}
+                <div className="flex flex-col gap-y-5 line-clamp-1">
+                  {subNav.map(({ id, title, href }) => {
+                    return (
+                      <React.Fragment key={id}>
+                        <Link
+                          href={href}
+                          className={
+                            pathname === href
+                              ? "text-primary font-bold"
+                              : "text-zinc-700"
+                          }
+                        >
+                          {title}
+                        </Link>
+                      </React.Fragment>
+                    );
+                  })}
                 </div>
               </AccordionItem>
             ) : (
               <AccordionItem
-                as={Link}
-                href={mainHref}
                 title={mainNav}
-                indicator=" "
-                className={
+                indicator={<HiChevronRight className="size-5" />}
+                aria-expanded={mainNav}
+              >
+                <Link
+                  href={mainHref}
+                  className={
                     pathname === mainHref
                       ? "text-primary font-bold"
                       : "text-zinc-700"
                   }
-                classNames={{
-                  heading: "py-0 w-full my-5 bg-slate-50 rounded-lg",
-                  content: "hidden",
-                }}
-                aria-expanded={mainNav}
-              ></AccordionItem>
+                >
+                  {mainNav}
+                </Link>
+              </AccordionItem>
             );
           })}
+          <AccordionItem
+            title="آدرس فروشگاه"
+            indicator={<HiChevronRight className="size-5" />}
+          >
+            <Link
+              href="https://www.google.com/maps/place/%D8%A7%DB%8C%D9%88%D8%A7%D8%B2+%D9%BE%D9%84%D8%A7%D8%B3%E2%80%AD/@37.4752277,49.4553436,17z/data=!3m1!4b1!4m6!3m5!1s0x401feb36d5c9f789:0x11d5407d8859e1e2!8m2!3d37.4752277!4d49.4553436!16s%2Fg%2F11fq4k68s9?entry=ttu"
+              target="_blank"
+            >
+               آدرس فروشگاه
+            </Link>
+          </AccordionItem>
         </Accordion>
       </Drawer>
     </section>

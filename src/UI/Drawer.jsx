@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { Button, Chip } from "@nextui-org/react";
+import { Chip } from "@nextui-org/react";
 import Image from "next/image";
 import { HiXMark } from "react-icons/hi2";
 const Drawer = ({ children, textIcon, imageHref, text, chipNumber, icon }) => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   return (
     <>
-      <Button
-        onPress={() => setIsOpenDrawer((prev) => !prev)}
+      <button
+        onClick={() => setIsOpenDrawer((prev) => !prev)}
         className="flex-center bg-transparent px-0 min-w-11"
       >
         {textIcon ? (
@@ -33,7 +33,7 @@ const Drawer = ({ children, textIcon, imageHref, text, chipNumber, icon }) => {
         ) : (
           icon
         )}
-      </Button>
+      </button>
       <section className="relative">
         {/* Backdrop */}
         <div
