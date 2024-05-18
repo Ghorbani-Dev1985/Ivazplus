@@ -33,7 +33,10 @@
     }
     .flex-between{
       @apply flex justify-between items-center
-    }   
+    } 
+    .dir-ltr{
+      direction: ltr;
+    }  
   }
   .ql-editor {
     direction: rtl;
