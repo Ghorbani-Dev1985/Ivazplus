@@ -2,8 +2,8 @@
 import "@/Styles/globals.css";
 
 
-import {IranYekan} from '../constants/LocalFonts'
-import {YekanBakh} from '../constants/LocalFonts'
+import {IranYekan} from '../../constants/LocalFonts'
+import {YekanBakh} from '../../constants/LocalFonts'
 
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
