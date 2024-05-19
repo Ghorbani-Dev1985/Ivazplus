@@ -4,6 +4,8 @@ import { footerMenusItems } from "src/constants/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import { BiLogoInstagram } from "react-icons/bi";
+import NewsLatter from "./NewsLatter";
+import CopyRight from "./CopyRight";
 
 const Footer = () => {
     return ( 
@@ -43,19 +45,10 @@ const Footer = () => {
                     )
                 }) 
                 }
-               <div className="col-span-3">
-                  <div classNam e="flex flex-col">
-                  <h4 className="mb-4 text-lg">عضویت در خبرنامه</h4>
-                  <div className="w-full flex-between bg-gradient-to-r from-primary to-secondary text-white px-2 py-3.5 rounded-lg">
-                     <span>ما را دنبال کنید</span>
-                     <Link href="https://www.instagram.com/ivaz_plus/" target="_blank" className="flex-center gap-2"><span className="dir-ltr">@ivaz_plus</span>
-                     <BiLogoInstagram className="size-7"/>
-                     </Link>
-                  </div>
-                  </div>
-               </div>
+               <NewsLatter />
               </div>
               <Divider className="my-8"/>
+              <CopyRight />
             </div>
         </section>
      );
