@@ -57,7 +57,17 @@ module.exports = {
       backgroundImage: {
         'paternBg' : 'url("/Footer/footerPatern.png")',
          'categories': 'linear-gradient(rgba(109,44,136,0) 0,rgba(109,44,136,0) 47.27%,#6d2c88 100%)'
-    },
+     },
+     animation: {
+        'circle' : 'circle 1.75s'
+     },
+    keyframes: {
+      circle: {
+        "0%": {opacity: '1'},
+        "40%": {opacity: '1'},
+        "100%": {width: '1200px' , height: '1200px' ,  opacity: '0'},
+      }
+    }
     },
     screens: {
       'xs': '480px',

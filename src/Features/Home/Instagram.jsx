@@ -12,6 +12,7 @@ const Instagram = () => {
           placeholder="blur"
           blurDataURL="/images/icon/instagram.svg"
           src="/images/icon/instagram.svg"
+          className="rounded-none"
         />
         <p>ما را دنبال کنید</p>
         <Link

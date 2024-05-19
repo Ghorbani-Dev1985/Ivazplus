@@ -30,7 +30,7 @@ const CategoryItem = ({ image, href, title }) =>{
 
          <Link href={href} className="flex flex-1 relative z-10 before:content-[''] before:bg-categories hover:before:bg-primary/35 before:block before:absolute before:inset-0 overflow-hidden rounded-2xl">
                   <Image
-                    width={546}
+                    width={746}
                     height={357}
                     alt="ghorbani-dev.ir"
                     placeholder="blur"

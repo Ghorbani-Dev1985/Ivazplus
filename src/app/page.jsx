@@ -1,6 +1,8 @@
 import Categories from "@/Features/Home/Categories";
+import ContactUs from "@/Features/Home/ContactUs";
 import HeroHeader from "@/Features/Home/HeroHeder";
 import Instagram from "@/Features/Home/Instagram";
+import SecondCategories from "@/Features/Home/SecondCategories";
 
 
 export const metadata = {
@@ -16,18 +18,9 @@ const HomePage = async () => {
     <>
       <HeroHeader />
       <Categories />
+      <SecondCategories />
+      <ContactUs />
       <Instagram />
-      {/* <main className="min-h-screen">
-        <Slider />
-        <section className="container">
-          <QuickAccess />
-          <Menus />
-          <AboutUsItems />
-          <BlogsList blogs={blogs} />
-        </section>
-        <AboutUS />
-        <ImageGallery />
-      </main> */}
     </>
   );
 };
