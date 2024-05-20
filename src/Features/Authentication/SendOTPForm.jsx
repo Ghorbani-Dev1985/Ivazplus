@@ -11,8 +11,8 @@ const SendOTPForm = ({SendOtpHandler , register , isPendingOtp , errors}) => {
          <TextField type="tel" label="شماره موبایل" name="phoneNumber" required register={register}  validationSchema={{
             required: "لطفا شماره موبایل را وارد نمایید",
             minLength: {
-              value: 10,
-              message: "حداقل ۱۰ کاراکتر وارد نمایید  ",
+              value: 11,
+              message: "حداقل ۱۱ کاراکتر وارد نمایید  ",
             },
             maxLength: {
               value: 11,

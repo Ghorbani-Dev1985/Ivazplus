@@ -1,4 +1,5 @@
 "use client";
+import CheckOTPForm from "@/Features/Authentication/CheckOTPForm";
 import SendOTPForm from "@/Features/Authentication/SendOTPForm";
 import { GetOtp } from "@/Services/AuthServices";
 import { useMutation } from "@tanstack/react-query";
@@ -7,10 +8,16 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const Authentication = () => {
-  const { handleSubmit, register, reset , formState: { errors }} = useForm();
-  const [step, setStep] = useState(1);
   const {
-     isLoading: isPendingOtp,
+    handleSubmit,
+    register,
+    reset,
+    getValues,
+    formState: { errors },
+  } = useForm();
+  const [step, setStep] = useState(2);
+  const {
+    isPending: isPendingOtp,
     data: OtpResponse,
     mutateAsync: mutateGetOtp,
   } = useMutation({
@@ -27,14 +34,31 @@ const Authentication = () => {
     }
   };
 
-  return (
-    <SendOTPForm
-      register={register}
-      SendOtpHandler={handleSubmit(SendOtpHandler)}
-      isPendingOtp={isPendingOtp}
-      errors={errors}
-    />
-  );
+  const renderSteps = () => {
+    switch (step) {
+      case 1:
+        return (
+          <SendOTPForm
+            register={register}
+            SendOtpHandler={handleSubmit(SendOtpHandler)}
+            isPendingOtp={isPendingOtp}
+            errors={errors}
+          />
+        );
+      case 2:
+        return (
+          <CheckOTPForm
+            onBack={() => setStep((s) => s - 1)}
+            phoneNumber={getValues("PhoneNumber")}
+            onResendOtp={SendOtpHandler}
+            otpResponse={OtpResponse}
+          />
+        );
+      default:
+        return null;
+    }
+  };
+  return renderSteps();
 };
 
 export default Authentication;
