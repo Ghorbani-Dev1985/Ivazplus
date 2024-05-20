@@ -8,7 +8,7 @@ const Drawer = ({ children, textIcon, imageHref, text, chipNumber, icon }) => {
     <>
       <button
         onClick={() => setIsOpenDrawer((prev) => !prev)}
-        className="flex-center bg-transparent px-0 min-w-11"
+        className="flex-center gap-x-1 bg-transparent px-0 min-w-11"
       >
         {textIcon ? (
           <>

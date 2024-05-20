@@ -6,6 +6,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import Image from "next/image";
+import { Providers } from "../Provisers";
 export default function AuthLayout({ children }) {
   return (
     <html
@@ -48,7 +49,9 @@ export default function AuthLayout({ children }) {
                   src="/images/logo/logo.svg"
                   className="object-cover"
                 />
+                <Providers>
                 {children}
+                </Providers>
               </div>
             </section>
           </main>

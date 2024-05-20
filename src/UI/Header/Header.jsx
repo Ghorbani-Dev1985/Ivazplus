@@ -114,7 +114,7 @@ const Header = () => {
             </div>
             {/* Account */}
             <div className="flex-center h-6 gap-x-2">
-              <Link href="login" className="flex-center gap-x-2">
+              <Link href="/authentication" className="flex-center">
                 <HiOutlineUser className="size-6" />
                 <span className="hidden md:block">حساب کاربری</span>
               </Link>

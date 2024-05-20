@@ -10,6 +10,7 @@ import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import Header from "@/UI/Header/Header";
 import Footer from "@/UI/Footer/Footer";
+import { Providers } from "../Provisers";
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={`${IranYekan.variable} ${YekanBakh.variable} font-sans`}>
@@ -37,7 +38,7 @@ export default function RootLayout({ children }) {
         <NextUIProvider>
         <Toaster />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen"><Providers>{children}</Providers></main>
         <Footer />
         </NextUIProvider>
       </body>
