@@ -1,12 +1,12 @@
-"use client";
+'use client';
 import "@/Styles/globals.css";
-import { IranYekan } from "../../constants/LocalFonts";
-import { YekanBakh } from "../../constants/LocalFonts";
+import { IranYekan } from "@/Constants/LocalFonts";
+import { YekanBakh } from "@/Constants/LocalFonts";
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import Image from "next/image";
-import { Providers } from "../Provisers";
+import ReactQueryProvider  from "../Providers";
 export default function AuthLayout({ children }) {
   return (
     <html
@@ -35,6 +35,7 @@ export default function AuthLayout({ children }) {
         <link rel="icon" href="images/logo/logo.svg" type="image/svg" />
       </head>
       <body>
+         <ReactQueryProvider>
         <NextUIProvider>
           <Toaster />
           <main className="w-full h-screen bg-gradient-to-t from-primary to-secondary">
@@ -49,13 +50,11 @@ export default function AuthLayout({ children }) {
                   src="/images/logo/logo.svg"
                   className="object-cover"
                 />
-                <Providers>
-                {children}
-                </Providers>
+               {children}
               </div>
             </section>
           </main>
-        </NextUIProvider>
+        </NextUIProvider></ReactQueryProvider>
       </body>
     </html>
   );

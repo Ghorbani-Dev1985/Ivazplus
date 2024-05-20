@@ -4,6 +4,7 @@
     "paths": {
       "@/Data/*" : ["Data/*"],
       "@/Services/*" : ["src/Services/*"],
+      "@/Constants/*" : ["src/constants/*"],
       "@/Hooks/*" : ["src/Hooks/*"],
       "@/Components/*" : ["src/Components/*"],
       "@/Containers/*" : ["src/Containers/*"],
