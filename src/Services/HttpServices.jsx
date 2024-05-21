@@ -23,7 +23,7 @@ Api.interceptors.response.use(
                 return Promise.reject(error)
             }
         }
-        Promise.reject(err)
+       return Promise.reject(err)
     }
 )
 

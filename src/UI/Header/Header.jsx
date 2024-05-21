@@ -119,7 +119,7 @@ const Header = () => {
             {/* Account */}
             <div className={`${isPending ? "blur-sm opacity-70" : "blur-0 opacity-100"} flex-center h-6 gap-x-2`}>
               {
-                user ? <p className="flex-center gap-x-1"><HiMiniUserCircle className="size-8 text-primary"/>{user.name}</p> :
+                user ? <Link href="/profile" className="flex-center gap-x-1 text-xs md:text-base"><HiMiniUserCircle className="hidden md:block md:size-8 fill-primary"/>{user.name}</Link> :
               <Link href="/authentication" className="flex-center">
                 <HiOutlineUser className="size-6" />
                 <span className="hidden md:block">حساب کاربری</span>

@@ -19,13 +19,13 @@ const Drawer = ({ children, textIcon, imageHref, text, chipNumber, icon }) => {
               placeholder="blur"
               blurDataURL={imageHref}
               src={imageHref}
-              objectFit={true}
+              className="mr-1 md:mr-0"
             />
             <span className="hidden md:block">{text}</span>
             <Chip
               color="secondary"
               variant="solid"
-              classNames={{ base: "rounded-full py-4" }}
+              classNames={{ base: "rounded-full py-1.5" , content: "px-1.5" }}
             >
               {chipNumber}
             </Chip>
