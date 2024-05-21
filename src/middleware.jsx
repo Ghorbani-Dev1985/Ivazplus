@@ -1,16 +1,21 @@
+import { NextResponse } from "next/server";
+import middlewareAuth from "./utils/middlewareAuth";
 
-export function middleware(req){
-    console.log(req.url , req.nextUrl.pathname)
+
+export async function middleware(req){
     const url = req.url;
     const pathname = req.nextUrl.pathname;
     if(pathname.startsWith("/profile")){
-        console.log("this is profile req!!!")
+        const user = await middlewareAuth(req);
+        if(!user) return NextResponse.redirect(new URL("/authentication" , url));
     }
     if(pathname.startsWith("/dashboard")){
-        console.log("this is dashboard req!!!")
+        const user = await middlewareAuth(req);
+        if(!user) return NextResponse.redirect(new URL("/authentication" , url));
+        if(user && user.role !== "ADMIN") return NextResponse.redirect(new URL("/" , url));
     }
 }
 
 export const config = {
-    matcher: ["/dashboard" , "/profile"],
+    matcher: ["/dashboard/:path*" , "/profile/:path*"],
 }
