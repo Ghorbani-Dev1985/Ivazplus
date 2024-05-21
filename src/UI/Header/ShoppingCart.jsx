@@ -1,10 +1,10 @@
 import Drawer from "../Drawer";
 
-const ShoppingCart = () => {
+const ShoppingCart = ({cartItemCount}) => {
    
     return ( 
         <>
-       <Drawer textIcon imageHref="images/icon/cart.svg" text="سبد خرید" chipNumber="0" >
+       <Drawer textIcon imageHref="images/icon/cart.svg" text="سبد خرید" chipNumber={cartItemCount} >
         dsds
        </Drawer>
         </>

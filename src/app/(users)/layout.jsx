@@ -35,15 +35,17 @@ export default function RootLayout({ children }) {
         />
         <link rel="icon" href="images/logo/logo.svg" type="image/svg" />
       </head>
-      <body>
+      <body> 
+        <ReactQueryProvider>
         <NextUIProvider>
           <Toaster />
           <Header />
           <main className="min-h-screen">
-            <ReactQueryProvider>{children}</ReactQueryProvider>
+           {children}
           </main>
           <Footer />
         </NextUIProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

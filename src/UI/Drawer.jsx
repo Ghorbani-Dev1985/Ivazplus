@@ -25,7 +25,7 @@ const Drawer = ({ children, textIcon, imageHref, text, chipNumber, icon }) => {
             <Chip
               color="secondary"
               variant="solid"
-              classNames={{ base: "rounded-full" }}
+              classNames={{ base: "rounded-full py-4" }}
             >
               {chipNumber}
             </Chip>

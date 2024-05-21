@@ -6,13 +6,17 @@ import React, { useState } from "react";
 import MenuItems from "src/constants/MenuItems";
 import Search from "./Search";
 import { Divider } from "@nextui-org/react";
-import { HiOutlineUser } from "react-icons/hi2";
+import { HiMiniUserCircle, HiOutlineUser } from "react-icons/hi2";
 import ShoppingCart from "./ShoppingCart";
 import MobileNav from "./MobileNav";
 import { BiCaretUp, BiChevronDown, BiChevronLeft } from "react-icons/bi";
+import { useGetUser } from "src/hooks/useAuth";
 const Header = () => {
   const pathname = usePathname();
   const [submenuImg, setSubmenuImg] = useState("");
+  const {data , error , isPending} = useGetUser()
+  const {user , cart} = data || {}
+  console.log({data , error , isPending})
   return (
     <header>
       <section className="container xl:max-w-screen-xl relative">
@@ -113,16 +117,19 @@ const Header = () => {
               <Divider orientation="vertical" />
             </div>
             {/* Account */}
-            <div className="flex-center h-6 gap-x-2">
+            <div className={`${isPending ? "blur-sm opacity-70" : "blur-0 opacity-100"} flex-center h-6 gap-x-2`}>
+              {
+                user ? <p className="flex-center gap-x-1"><HiMiniUserCircle className="size-8 text-primary"/>{user.name}</p> :
               <Link href="/authentication" className="flex-center">
                 <HiOutlineUser className="size-6" />
                 <span className="hidden md:block">حساب کاربری</span>
               </Link>
+              }
               <Divider orientation="vertical" />
             </div>
             {/* Shop Cart */}
             <div className="flex-center gap-x-2">
-              <ShoppingCart />
+              <ShoppingCart cartItemCount={cart ? cart.payDetail.productIds.length : 0}/>
             </div>
           </section>
         </div>
