@@ -11,13 +11,7 @@ import useTitle from "src/hooks/useTitle";
 
 const Authentication = () => {
   const title = useTitle("ورود ثبت نام | ایواز پلاس")
-  const {
-    handleSubmit,
-    register,
-    reset,
-    getValues,
-    formState: { errors },
-  } = useForm();
+  
   const [step, setStep] = useState(2);
   const {
     isPending: isPendingOtp,

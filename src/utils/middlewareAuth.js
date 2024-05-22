@@ -5,7 +5,6 @@ export default async function middlewareAuth(req){
     req.cookies.getAll().forEach((item) => {
         strCookie += `${item?.name}=${item.value}; `
     })
-    console.log("this is profile req!!!")
        const {data} = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/profile` , {
             method: "GET",
             credentials: "include",

@@ -23,7 +23,7 @@ const Sidebar = () => {
             <Link href="/" className="bg-white p-2 rounded-lg flex items-center gap-x-1.5"><HiOutlineHome className="size-5"/> صفحه اصلی</Link>
          </li>
          <li>
-            <Link href="/me" className="bg-white p-2 rounded-lg flex items-center gap-x-1.5"><HiOutlineUser className="size-5"/> اطلاعات کاربری</Link>
+            <Link href="/profile/me" className="bg-white p-2 rounded-lg flex items-center gap-x-1.5"><HiOutlineUser className="size-5"/> اطلاعات کاربری</Link>
          </li>
         </ul>
        </section>
