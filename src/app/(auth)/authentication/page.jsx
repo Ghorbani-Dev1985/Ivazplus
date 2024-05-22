@@ -6,8 +6,11 @@ import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useTitle from "src/hooks/useTitle";
+
 
 const Authentication = () => {
+  const title = useTitle("ورود ثبت نام | ایواز پلاس")
   const {
     handleSubmit,
     register,
