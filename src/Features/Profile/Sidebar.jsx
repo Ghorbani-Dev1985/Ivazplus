@@ -1,8 +1,14 @@
+import { LogoutUser } from "@/Services/AuthServices";
 import { Divider, Link } from "@nextui-org/react";
 import Image from "next/image";
 import { HiOutlineHome, HiOutlineUser } from "react-icons/hi";
+import { HiArrowLeftStartOnRectangle } from "react-icons/hi2";
 
 const Sidebar = () => {
+   const LogoutHandler = async () => {
+      await LogoutUser();
+      document.location.href = "/";
+   }
     return ( 
        <aside className="col-span-1 overflow-y-auto">
        <section className="bg-gradient-to-t from-primary to-secondary p-3 rounded-3xl min-h-screen">
@@ -24,6 +30,9 @@ const Sidebar = () => {
          </li>
          <li>
             <Link href="/profile/me" className="bg-white p-2 rounded-lg flex items-center gap-x-1.5"><HiOutlineUser className="size-5"/> اطلاعات کاربری</Link>
+         </li>
+         <li>
+            <button onClick={LogoutHandler} className="w-full bg-white text-rose-500 p-2 rounded-lg flex items-center gap-x-1.5"><HiArrowLeftStartOnRectangle className="size-5"/>  خروج</button>
          </li>
         </ul>
        </section>

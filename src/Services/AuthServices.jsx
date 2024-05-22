@@ -17,6 +17,10 @@ export function GetUser(){
     return Http.get("/user/profile").then(({data}) => data.data)
 }
 
+export function UpdateProfile(data) {
+    return Http.patch("/user/update", data).then(({ data }) => data.data);
+  }
+
 export function LogoutUser(){
     return Http.post("/user/logout").then(({data}) => data.data)
 }
