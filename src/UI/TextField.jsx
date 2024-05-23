@@ -11,7 +11,7 @@ const TextField = ({
   required,
   validationSchema = {},
   errors,
-  customStyle
+  customStyle,
 }) => {
   return (
     <div className="w-full">

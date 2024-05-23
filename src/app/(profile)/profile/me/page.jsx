@@ -4,39 +4,42 @@ import Loading from "@/UI/Loding";
 import TextField from "@/UI/TextField";
 import { Button } from "@nextui-org/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useGetUser } from "src/hooks/useAuth";
 import useTitle from "src/hooks/useTitle";
+import { includeObj } from "src/utils/objectUtils";
 
-const Me = () => {
+const MePage = () => {
   const title = useTitle("اطلاعات کاربری | ایواز پلاس");
   const { data, isLoading } = useGetUser();
-  const [userInfos , setUserInfos] = useState({})
   const queryClient = useQueryClient();
+  //  const [userInfos , setUserInfos] = useState({})
   const { isLoading: isUpdating, mutateAsync } = useMutation({
     mutationFn: UpdateProfile,
   });
   const { user } = data || {};
-  useEffect(() => {
-      if(user){
-          setUserInfos({
-          name: user.name,
-          phoneNumber: user.phoneNumber,
-          email: user.email,
-          biography: user.biography
-        })
-        
-    }
-}, [user]);
-console.log(userInfos)
+  let userInfos = {
+        name: user?.name,
+        phoneNumber: user?.phoneNumber,
+        email: user?.email,
+        biography: user?.biography
+      }
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors },
-  } = useForm({ defaultValues: userInfos , mode: "all" });
+  } = useForm({mode: "all" });
+  useEffect(() => {
+    reset({
+      name: userInfos.name,
+      phoneNumber: userInfos.phoneNumber,
+      email: userInfos.email,
+      biography: userInfos.biography
+    })
+  },[user])
   const UpdateProfileHandler = async (data) => {
     try {
       const { message } = await mutateAsync(data);
@@ -161,4 +164,4 @@ console.log(userInfos)
   );
 };
 
-export default Me;
+export default MePage;
