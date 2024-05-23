@@ -23,7 +23,7 @@ const Header = () => {
         {/* DesktopNav */}
         <div className="w-full flex-between py-4">
           <nav className="hidden lg:flex-center gap-x-3 text-xs font-bold">
-            <ul className="flex items-center gap-1.5">
+            <ul className="flex items-center gap-3.5">
                {MenuItems.map(({ id, mainNav, mainHref, subNav }) => {
               return (
                 <React.Fragment key={id}>
@@ -90,9 +90,8 @@ const Header = () => {
               );
             })}
             </ul>
-           
             <Link
-              href="https://www.google.com/maps/place/%D8%A7%DB%8C%D9%88%D8%A7%D8%B2+%D9%BE%D9%84%D8%A7%D8%B3%E2%80%AD/@37.4752277,49.4553436,17z/data=!3m1!4b1!4m6!3m5!1s0x401feb36d5c9f789:0x11d5407d8859e1e2!8m2!3d37.4752277!4d49.4553436!16s%2Fg%2F11fq4k68s9?entry=ttu"
+              href="https://maps.app.goo.gl/RJy9ncZNQxp8VcG16"
               target="_blank"
             >
               آدرس فروشگاه
@@ -105,7 +104,7 @@ const Header = () => {
             placeholder="blur"
             blurDataURL="images/logo/logo.svg"
             src="images/logo/logo.svg"
-            className="h-12 md:h-auto"
+            className="h-12 md:h-auto rounded-none"
           />
           {/* Icons */}
           <section className="flex-center gap-x-1.5 md:gap-x-3">
