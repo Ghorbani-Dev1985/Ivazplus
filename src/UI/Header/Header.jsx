@@ -16,7 +16,6 @@ const Header = () => {
   const [submenuImg, setSubmenuImg] = useState("");
   const {data , error , isPending} = useGetUser()
   const {user , cart} = data || {}
-  console.log({data , error , isPending})
   return (
     <header>
       <section className="container xl:max-w-screen-xl relative">
