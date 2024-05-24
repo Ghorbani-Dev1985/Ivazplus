@@ -4,6 +4,7 @@ import { GetProducts } from "@/Services/ProductServices";
 import React from "react";
 import CategorySidebar from "./[slug]/CategorySidebar";
 import queryString from "query-string";
+import ProductsSort from "./[slug]/ProductsSort";
 export const dynamic = 'force-dynamic'; // eq to {cache  : "no-store"} or SSR in pages directory
 
 const Products = async ({searchParams}) => {
@@ -15,6 +16,7 @@ const Products = async ({searchParams}) => {
       <div className="hidden md:grid md:col-span-1"><CategorySidebar categories={categories}/></div>
       <div className="col-span-4 md:col-span-3">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <ProductsSort />
           {products.map((product) => {
             return (
               <React.Fragment key={product._id}>
