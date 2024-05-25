@@ -101,8 +101,8 @@ const Header = () => {
             height={85}
             alt="ghorbani-dev.ir"
             placeholder="blur"
-            blurDataURL="images/logo/logo.svg"
-            src="images/logo/logo.svg"
+            blurDataURL="/images/logo/logo.svg"
+            src="/images/logo/logo.svg"
             className="h-12 md:h-auto rounded-none"
           />
           {/* Icons */}

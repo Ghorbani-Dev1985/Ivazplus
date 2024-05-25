@@ -26,8 +26,8 @@ const Search = () => {
           height={24}
           alt="ghorbani-dev.ir"
           placeholder="blur"
-          blurDataURL="images/icon/search.svg"
-          src="images/icon/search.svg"
+          blurDataURL="/images/icon/search.svg"
+          src="/images/icon/search.svg"
           objectFit={true}
         />
         <span className="hidden md:block">جستجو</span>

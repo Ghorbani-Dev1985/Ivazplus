@@ -2,59 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    * {
-        @apply p-0 m-0 box-border;
-      }
-      html{
-        @apply scroll-smooth scrollbar-thin scrollbar-thumb-primary  scrollbar-track-primary-100;
-        direction: rtl;
-      }
-      li{
-        @apply list-none
-      }
-      body {
-        @apply text-zinc-700 bg-white h-full font-IranYekan text-base overflow-x-hidden scroll-smooth;
-      }
-      h1,h2,h3,h4,h5,h6{
-        @apply font-YekanBakh font-bold
-      }
-      img{
-        border-radius: 20px;
-      }
+@layer base {
+  * {
+    @apply p-0 m-0 box-border;
+  }
+  html {
+    @apply scroll-smooth scrollbar-thin scrollbar-thumb-primary  scrollbar-track-primary-100;
+    direction: rtl;
+  }
+  li {
+    @apply list-none;
+  }
+  body {
+    @apply text-zinc-700 bg-white h-full font-IranYekan text-base overflow-x-hidden scroll-smooth;
+  }
+  img {
+    border-radius: 20px;
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 
 @layer components {
   .textField-input {
-    @apply w-full px-4 py-3 rounded-lg text-secondary-900 outline-none border border-gray-100 bg-gray-100 dark:bg-transparent hover:border-primary-500 focus:border-primary-500 transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary-200 dark:focus:shadow-secondary-200
+    @apply w-full px-4 py-3 rounded-lg text-secondary-900 outline-none border border-gray-100 bg-gray-100 dark:bg-transparent hover:border-primary-500 focus:border-primary-500 transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary-200 dark:focus:shadow-secondary-200;
   }
 }
 
 @layer utilities {
-    .flex-center{
-      @apply flex justify-center items-center
-    }
-    .flex-between{
-      @apply flex justify-between items-center
-    } 
-    .dir-ltr{
-      direction: ltr;
-    }  
+  .flex-center {
+    @apply flex justify-center items-center;
   }
-  .ql-editor {
-    direction: rtl;
-    text-align: right !important;
+  .flex-between {
+    @apply flex justify-between items-center;
   }
+  .dir-ltr {
+    direction: ltr;
+  }
+}
+.ql-editor {
+  direction: rtl;
+  text-align: right !important;
+}
 
-  .drawer-animated-slide-in {
-    animation: slide-in 0.5s forwards;
+.drawer-animated-slide-in {
+  animation: slide-in 0.5s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    right: -30rem;
   }
-  
-  @keyframes slide-in {
-    from {
-      right: -30rem;
-    }
-    to {
-      right: 0;
-    }
+  to {
+    right: 0;
   }
+}
