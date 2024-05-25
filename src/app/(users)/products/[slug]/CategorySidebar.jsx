@@ -9,6 +9,7 @@ import {
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import { HiChevronRight } from "react-icons/hi";
 
 const CategorySidebar = ({ categories }) => {
   const router = useRouter();
@@ -52,8 +53,8 @@ const CategorySidebar = ({ categories }) => {
         label="جستجو دسته بندی مورد نظر"
         endContent={<BiSearchAlt className="size-7 shrink-0 text-primary" />}
       />
-      <Accordion defaultExpandedKeys={["1", "2"]}>
-        <AccordionItem key="1" aria-label="Accordion 1" title="دسته بندی‌ها">
+      <Accordion defaultExpandedKeys={["2"]}>
+        <AccordionItem key="1" aria-label="Accordion 1" title="دسته بندی‌ها" indicator={<HiChevronRight className="size-5"/>}>
           <ul className="space-y-5">
             {categories.map(({ _id, title, englishTitle }) => {
               return (
@@ -72,7 +73,7 @@ const CategorySidebar = ({ categories }) => {
             })}
           </ul>
         </AccordionItem>
-        <AccordionItem key="2" aria-label="Accordion 1" title=" محدوده قیمت">
+        <AccordionItem key="2" aria-label="Accordion 1" title=" محدوده قیمت" indicator={<HiChevronRight className="size-5"/>}>
           <Slider
             label=" "
             step={100000}
