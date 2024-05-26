@@ -2,23 +2,22 @@ import { Button } from "@nextui-org/react";
 import Link from "next/link";
 
 const CartSummery = ({ payDetail }) => {
-  console.log(payDetail);
   const { totalOffAmount, totalPrice, totalGrossPrice } = payDetail;
   return (
     <section className="w-full lg:w-1/4 sticky top-2 h-full">
       <div className="bg-primary-500 text-white flex flex-col items-center gap-y-6 rounded-3xl px-3 py-6">
         <p className="text-lg font-bold mb-5">خطاصه صورتحساب</p>
         <div className="w-full flex-between">
-          <p>مبلغ کل(۱ کالا)</p>
+          <p>مبلغ کل</p>
           <p>{totalGrossPrice.toLocaleString()} تومان</p>
         </div>
         <div className="w-full flex-between">
           <p>سود شما از خرید</p>
           <p>
-            {totalOffAmount.toLocaleString()} {totalOffAmount > 0 && تومان}
+            {totalOffAmount.toLocaleString()}  {totalOffAmount > 0 && "- تومان"}
           </p>
         </div>
-        <div className="w-full flex-between">
+        <div className="w-full flex-between font-bold">
           <p>مبلغ قابل پرداخت</p>
           <p>{totalPrice.toLocaleString()} تومان</p>
         </div>

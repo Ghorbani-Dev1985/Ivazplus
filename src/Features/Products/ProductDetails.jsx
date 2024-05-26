@@ -10,8 +10,9 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import Loading from "@/UI/Loding";
-import { useAddToCart } from "src/hooks/useAddToCart";
+import { useAddToCart } from "src/hooks/useCart";
 import Link from "next/link";
+import Counter from "./Counter";
 
 
 const ProductDetails = ({ product }) => {
@@ -28,11 +29,7 @@ const ProductDetails = ({ product }) => {
     description,
   } = product;
   const [count, setCount] = useState(1);
-  const MinusCountHandler = () => {
-    if (count > 1) {
-      setCount((prev) => prev - 1);
-    }
-  };
+
   const pageTitle = useTitle(`${title} | ایواز پلاس`);
   const {data} = useGetUser();
   const {user , cart} = data || {};
@@ -72,26 +69,7 @@ const ProductDetails = ({ product }) => {
           <div>جدول سایز</div>
           <div className="flex-between">
             {/* Counter */}
-            <div className="w-44 h-12 flex-center border border-gray-200 rounded-lg px-1.5">
-              <button
-                onClick={() => setCount((prev) => prev + 1)}
-                className="w-10 h-12 flex-center"
-              >
-                <HiOutlinePlus className="size-5" />
-              </button>
-              <input
-                type="number"
-                value={count}
-                className="w-full h-12 text-center border-t border-b border-gray-200 outline-none px-10 text-lg"
-              />
-              <button
-                onClick={MinusCountHandler}
-                disabled={count === 1 && true}
-                className="w-10 h-12 flex-center disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <HiMinus className="size-5" />
-              </button>
-            </div>
+           <Counter count={count} setCount={setCount}/>
             {countInStock > 0 ? (
               <>
                 <div
