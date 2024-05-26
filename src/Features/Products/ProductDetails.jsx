@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import Loading from "@/UI/Loding";
 import { useAddToCart } from "src/hooks/useAddToCart";
+import Link from "next/link";
 
 
 const ProductDetails = ({ product }) => {
@@ -52,6 +53,10 @@ const ProductDetails = ({ product }) => {
       }
    }
   }
+  const isInCart = (user, product) => {
+    if (!user) return false;
+    return user.cart?.products.some((p) => p.productId === product._id);
+  };
   return (
     <>
       <div className="flex justify-between gap-14 mb-12">
@@ -125,6 +130,9 @@ const ProductDetails = ({ product }) => {
             )}
           </div>
           {
+            isInCart(user , product) ? (
+                <Link href="/cart" className="w-full flex-center border border-primary hover:bg-primary-50 p-2 rounded-lg text-primary transition-colors">ادامه سفارش</Link>
+            ) :
             isPending ? <Loading /> : 
           <Button
             disabled={countInStock === 0 && true}
