@@ -5,9 +5,19 @@ import { useState } from "react";
 import { HiMinus, HiOutlinePlus, HiOutlineShoppingCart } from "react-icons/hi";
 import useTitle from "src/hooks/useTitle";
 import ProductDescription from "./ProductDescription";
+import { useGetUser } from "src/hooks/useAuth";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
+import Loading from "@/UI/Loding";
+import { useAddToCart } from "src/hooks/useAddToCart";
+
 
 const ProductDetails = ({ product }) => {
+    const queryClient = useQueryClient();
+   const router = useRouter();
   const {
+    _id,
     title,
     price,
     offPrice,
@@ -23,6 +33,25 @@ const ProductDetails = ({ product }) => {
     }
   };
   const pageTitle = useTitle(`${title} | ایواز پلاس`);
+  const {data} = useGetUser();
+  const {user , cart} = data || {};
+  const {isPending , error , mutateAsync} = useAddToCart();
+  const AddToCartHandler = async (id) => {
+    if(!user){
+        toast.error("لطفا ابتدا لاگین کنید")
+        router.push("/authentication")
+        return;
+    }
+   try {
+    const {message} = await mutateAsync(id)
+    toast.success(message);
+    queryClient.invalidateQueries({ queryKey: ["getUser"] });
+   } catch (error) {
+    if (error?.response?.data) {
+        toast.error(error.response.data.message);
+      }
+   }
+  }
   return (
     <>
       <div className="flex justify-between gap-14 mb-12">
@@ -95,19 +124,23 @@ const ProductDetails = ({ product }) => {
               ""
             )}
           </div>
+          {
+            isPending ? <Loading /> : 
           <Button
             disabled={countInStock === 0 && true}
+            onPress={() => AddToCartHandler(_id)}
             color="primary"
             className="w-full flex-center gap-x-1.5 bg-primary disabled:bg-slate-200 disabled:cursor-not-allowed text-white hover:bg-secondary hover:opacity-100 rounded-lg py-2.5 transition-colors"
           >
             {countInStock > 0 ? (
               <>
-                <HiOutlineShoppingCart className="size-6" /> افزودن به سبد خرید{" "}
+                <HiOutlineShoppingCart className="size-6" /> افزودن به سبد خرید
               </>
             ) : (
               <span className="text-rose-500">اتمام موجودی</span>
             )}
           </Button>
+          }
         </div>
         {/* Image */}
         <div className="flex justify-end flex-1">
