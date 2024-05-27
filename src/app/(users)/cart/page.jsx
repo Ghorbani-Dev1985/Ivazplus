@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { useGetUser } from "src/hooks/useAuth";
 import CartSummery from "./CartSummery";
 import CartItem from "./CartItem";
+import React from "react";
 
 const CartPage = () => {
   const router = useRouter();
@@ -41,7 +42,7 @@ const CartPage = () => {
             <div className="w-full lg:w-3/4">
               {cart &&
                 cart.productDetail.map((item) => {
-                  return <CartItem key={item._id} cartItem={item} />;
+                  return <React.Fragment key={item._id}> <CartItem cartItem={item} /></React.Fragment>;
                 })}
             </div>
             {/* Cart Summery */}

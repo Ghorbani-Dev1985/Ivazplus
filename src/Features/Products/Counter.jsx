@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { HiMinus, HiOutlinePlus, HiOutlineTrash } from "react-icons/hi";
 import { useAddToCart, useDecrementFromCart } from "src/hooks/useCart";
 
-const Counter = ({ quantity, id }) => {
+const Counter = ({ quantity, id , countInStock}) => {
   const { isLoading, mutateAsync: AddToCarAsync } = useAddToCart();
   const { mutateAsync: DecFromCartAsync } = useDecrementFromCart();
   const queryClient = useQueryClient();
@@ -31,7 +31,7 @@ const Counter = ({ quantity, id }) => {
   };
   return (
     <div className="w-44 h-12 flex-center border border-gray-200 rounded-lg px-1.5">
-      <button onClick={AddToCartHandler} className="w-10 h-12 flex-center">
+      <button disabled={quantity === countInStock && true} onClick={AddToCartHandler} className="w-10 h-12 disabled:text-gray-400 flex-center">
         <HiOutlinePlus className="size-5" />
       </button>
       <input

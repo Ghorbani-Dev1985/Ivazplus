@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
           `,
           }}
         />
-        <link rel="icon" href="images/logo/logo.svg" type="image/svg" />
+        <link rel="icon" href="/images/logo/logo.svg" type="image/svg" />
       </head>
       <body> 
         <ReactQueryProvider>

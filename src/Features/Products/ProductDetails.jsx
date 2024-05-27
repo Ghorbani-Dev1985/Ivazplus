@@ -1,8 +1,7 @@
 "use client";
 import { Button, Chip } from "@nextui-org/react";
 import Image from "next/image";
-import { useState } from "react";
-import { HiMinus, HiOutlinePlus, HiOutlineShoppingCart } from "react-icons/hi";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 import useTitle from "src/hooks/useTitle";
 import ProductDescription from "./ProductDescription";
 import { useGetUser } from "src/hooks/useAuth";
@@ -28,11 +27,11 @@ const ProductDetails = ({ product }) => {
     imageLink,
     description,
   } = product;
-  const [count, setCount] = useState(1);
-
   const pageTitle = useTitle(`${title} | ایواز پلاس`);
   const {data} = useGetUser();
   const {user , cart} = data || {};
+  const filteredQuantity = cart?.productDetail.filter(item => item._id === _id)
+   console.log(filteredQuantity && filteredQuantity[0].quantity)
   const {isPending , error , mutateAsync} = useAddToCart();
   const AddToCartHandler = async (id) => {
     if(!user){
@@ -69,7 +68,7 @@ const ProductDetails = ({ product }) => {
           <div>جدول سایز</div>
           <div className="flex-between">
             {/* Counter */}
-           <Counter count={count} setCount={setCount}/>
+         <Counter quantity={filteredQuantity && filteredQuantity[0].quantity} id={_id} countInStock={countInStock}/> 
             {countInStock > 0 ? (
               <>
                 <div

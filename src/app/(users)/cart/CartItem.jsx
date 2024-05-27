@@ -3,9 +3,11 @@ import Counter from "@/Features/Products/Counter";
 import { Chip } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
+import useTitle from "src/hooks/useTitle";
 
 const CartItem = ({ cartItem }) => {
-  const {_id, title, imageLink, quantity, slug, discount, offPrice, price } = cartItem;
+  const pageTitle = useTitle("سبد خرید | ایواز پلاس")
+  const { _id, title, imageLink, quantity, slug, discount, offPrice, price , countInStock} = cartItem;
   return (
     <div className="flex flex-col lg:flex-row gap-y-6 flex-between border border-gray-200 rounded-3xl p-3 mb-5">
       <div className="flex flex-col items-center lg:items-start lg:flex-row justify-center gap-x-2 gap-y-4">
@@ -26,16 +28,23 @@ const CartItem = ({ cartItem }) => {
           </Link>
           <ul className="child:list-disc mr-5 text-gray-500 space-y-4">
             <li>تعداد: {quantity}</li>
-            <li>تخفیف: {discount > 0 ?  <Chip color="secondary" variant="solid">
-                        ٪{discount} تخفیف
-                      </Chip> : "بدون تخفیف"}</li>
+            <li>
+               تخفیف: {discount > 0 ? (
+                <Chip color="secondary" variant="solid">
+                  ٪{discount} تخفیف
+                </Chip>
+              ) : (
+                "بدون تخفیف"
+              )}
+            </li>
             <li>قیمت با تخفیف: {offPrice.toLocaleString()} تومان</li>
           </ul>
         </div>
       </div>
-      <Counter quantity={quantity} id={_id}/>
+      <Counter quantity={quantity} id={_id} countInStock={countInStock}/>
       <div>
-        <span className="font-bold text-lg">{price.toLocaleString()}</span> تومان
+        <span className="font-bold text-lg">{price.toLocaleString()}</span>
+        تومان
       </div>
     </div>
   );
