@@ -5,9 +5,9 @@ import { YekanBakh } from "@/Constants/LocalFonts";
 import { NextUIProvider } from "@nextui-org/react";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
-import Footer from "@/UI/Footer/Footer";
-import  ReactQueryProvider  from "../Providers";
-export default function DashboardLayout({ children }) {
+import ReactQueryProvider from "../Providers";
+import Sidebar from "@/Features/Dashboard/Sidebar";
+export default function ProfileLayout({ children }) {
   return (
     <html
       lang="fa"
@@ -34,15 +34,19 @@ export default function DashboardLayout({ children }) {
         />
         <link rel="icon" href="images/logo/logo.svg" type="image/svg" />
       </head>
-      <body> 
+      <body>
         <ReactQueryProvider>
-        <NextUIProvider>
-          <Toaster />
-          <main className="min-h-screen">
-           {children}
-          </main>
-          <Footer />
-        </NextUIProvider>
+          <NextUIProvider>
+            <Toaster />
+            <main className="grid grid-cols-4 gap-x-3 bg-primary-50 h-screen">
+              <Sidebar />
+              <section className="col-span-3 overflow-y-auto p-3">
+                <div className="bg-gray-50 rounded-3xl p-3 min-h-screen">
+                  {children}
+                </div>
+              </section>
+            </main>
+          </NextUIProvider>
         </ReactQueryProvider>
       </body>
     </html>

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { GetUser } from "@/Services/AuthServices";
+import { GetAllUsers, GetUser } from "@/Services/AuthServices";
 
 export const useGetUser = () =>
   useQuery({
@@ -12,7 +12,7 @@ export const useGetUser = () =>
 export const useGetUsers = () =>
   useQuery({
     queryKey: ["getUsers"],
-    queryFn: getAllUsers,
+    queryFn: GetAllUsers,
     retry: false,
     refetchOnWindowFocus: true,
   });

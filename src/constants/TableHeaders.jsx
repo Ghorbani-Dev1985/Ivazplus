@@ -55,3 +55,30 @@ export const productsListInPanel = [
         label: "قیمت با تخفیف"
     }
 ]
+
+export const userListTableHeads = [
+    {
+      id: 1,
+      label: "نام",
+    },
+    {
+      id: 2,
+      label: "ایمیل",
+    },
+    {
+      id: 3,
+      label: "شماره موبایل",
+    },
+    {
+      id: 4,
+      label: "محصولات",
+    },
+    {
+      id: 5,
+      label: "تاریخ پیوستن",
+    },
+    {
+      id: 6,
+      label: "مشاهده",
+    },
+  ];
