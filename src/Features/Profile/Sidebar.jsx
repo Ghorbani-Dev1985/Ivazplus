@@ -2,7 +2,7 @@ import { LogoutUser } from "@/Services/AuthServices";
 import { Divider, Link } from "@nextui-org/react";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { HiOutlineHome, HiOutlineUser } from "react-icons/hi";
+import { HiOutlineHome, HiOutlineShoppingBag, HiOutlineUser } from "react-icons/hi";
 import { HiArrowLeftStartOnRectangle } from "react-icons/hi2";
 
 const Sidebar = () => {
@@ -41,6 +41,14 @@ const Sidebar = () => {
               className="bg-white p-2 rounded-lg flex items-center gap-x-1.5"
             >
               <HiOutlineUser className="size-5" /> اطلاعات کاربری
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/profile/order"
+              className="bg-white p-2 rounded-lg flex items-center gap-x-1.5"
+            >
+              <HiOutlineShoppingBag className="size-5" /> اطلاعات سفارشات
             </Link>
           </li>
           <li>
