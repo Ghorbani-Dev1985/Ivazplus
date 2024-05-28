@@ -31,7 +31,7 @@ const ProductDetails = ({ product }) => {
   const {data} = useGetUser();
   const {user , cart} = data || {};
   const filteredQuantity = cart?.productDetail.filter(item => item._id === _id)
-   console.log(filteredQuantity && filteredQuantity[0].quantity)
+  //  console.log(filteredQuantity && filteredQuantity[0].quantity)
   const {isPending , error , mutateAsync} = useAddToCart();
   const AddToCartHandler = async (id) => {
     if(!user){
@@ -68,7 +68,7 @@ const ProductDetails = ({ product }) => {
           <div>جدول سایز</div>
           <div className="flex-between">
             {/* Counter */}
-         <Counter quantity={filteredQuantity && filteredQuantity[0].quantity} id={_id} countInStock={countInStock}/> 
+         <Counter quantity={filteredQuantity && filteredQuantity[0]?.quantity} id={_id} countInStock={countInStock}/> 
             {countInStock > 0 ? (
               <>
                 <div

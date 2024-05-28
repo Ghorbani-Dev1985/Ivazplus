@@ -36,7 +36,7 @@ const Counter = ({ quantity, id , countInStock}) => {
       </button>
       <input
         type="number"
-        value={quantity}
+        value={quantity || 1}
         className="w-full h-12 text-center border-t border-b border-gray-200 outline-none px-10 text-lg"
       />
       <button

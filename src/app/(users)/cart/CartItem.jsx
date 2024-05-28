@@ -43,8 +43,7 @@ const CartItem = ({ cartItem }) => {
       </div>
       <Counter quantity={quantity} id={_id} countInStock={countInStock}/>
       <div>
-        <span className="font-bold text-lg">{price.toLocaleString()}</span>
-        تومان
+        <span className="font-bold text-xl">{price.toLocaleString()}</span> تومان
       </div>
     </div>
   );
