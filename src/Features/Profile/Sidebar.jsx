@@ -29,7 +29,7 @@ const Sidebar = () => {
           <Divider className="bg-white" />
           <li>
             <Link
-              href="/"
+              href="/profile"
               className="bg-white p-2 rounded-lg flex items-center gap-x-1.5"
             >
               <HiOutlineHome className="size-5" /> صفحه اصلی

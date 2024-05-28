@@ -34,7 +34,7 @@ const CustomTable = ({children , headerItems , itemsArray , renderCell}) => {
             }
           </div>
       }
-        classNames={{tbody: "my-4"}}
+        classNames={{wrapper: "my-6"}}
       >
         <TableHeader>
           {headerItems.map(({ id, label }) => {
