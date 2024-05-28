@@ -1,7 +1,7 @@
 "use client";
 import { Button, Chip } from "@nextui-org/react";
 import Image from "next/image";
-import { HiOutlineShoppingCart } from "react-icons/hi";
+import { HiOutlineHeart, HiOutlineShoppingCart } from "react-icons/hi";
 import useTitle from "src/hooks/useTitle";
 import ProductDescription from "./ProductDescription";
 import { useGetUser } from "src/hooks/useAuth";
@@ -12,11 +12,12 @@ import Loading from "@/UI/Loding";
 import { useAddToCart } from "src/hooks/useCart";
 import Link from "next/link";
 import Counter from "./Counter";
+import { LikeProduct } from "@/Services/ProductServices";
 
 
 const ProductDetails = ({ product }) => {
-    const queryClient = useQueryClient();
-   const router = useRouter();
+  const queryClient = useQueryClient();
+  const router = useRouter();
   const {
     _id,
     title,
@@ -26,28 +27,45 @@ const ProductDetails = ({ product }) => {
     countInStock,
     imageLink,
     description,
+    likes,
   } = product;
+  console.log(product)
   const pageTitle = useTitle(`${title} | ایواز پلاس`);
   const {data} = useGetUser();
   const {user , cart} = data || {};
   const filteredQuantity = cart?.productDetail.filter(item => item._id === _id)
-  //  console.log(filteredQuantity && filteredQuantity[0].quantity)
-  const {isPending , error , mutateAsync} = useAddToCart();
-  const AddToCartHandler = async (id) => {
+  const {isPending , mutateAsync} = useAddToCart();
+  const AddToCartHandler = async () => {
     if(!user){
         toast.error("لطفا ابتدا لاگین کنید")
         router.push("/authentication")
         return;
     }
    try {
-    const {message} = await mutateAsync(id)
+    const {message} = await mutateAsync(_id)
     toast.success(message);
-    queryClient.invalidateQueries({ queryKey: ["getUser"] });
    } catch (error) {
     if (error?.response?.data) {
         toast.error(error.response.data.message);
       }
    }
+  }
+  const LikeHandler = async () => {
+    
+    if(!user){
+      toast.error("لطفا ابتدا لاگین کنید")
+      return;
+  }
+  try {
+    const {message} = await LikeProduct(_id)
+    toast.success(message);
+  
+    router.refresh();
+  } catch (error) {
+    if (error?.response?.data) {
+      toast.error(error.response.data.message);
+    }
+  }
   }
   const isInCart = (user, product) => {
     if (!user) return false;
@@ -113,7 +131,7 @@ const ProductDetails = ({ product }) => {
             isPending ? <Loading /> : 
           <Button
             disabled={countInStock === 0 && true}
-            onPress={() => AddToCartHandler(_id)}
+            onPress={AddToCartHandler}
             color="primary"
             className="w-full flex-center gap-x-1.5 bg-primary disabled:bg-slate-200 disabled:cursor-not-allowed text-white hover:bg-secondary hover:opacity-100 rounded-lg py-2.5 transition-colors"
           >
@@ -129,6 +147,12 @@ const ProductDetails = ({ product }) => {
         </div>
         {/* Image */}
         <div className="flex justify-end flex-1">
+          <div className="relative">
+            <div className="absolute left-2 top-2">
+            <Button onPress={LikeHandler} isIconOnly color="danger" aria-label="Like">
+            <HiOutlineHeart className={`${likes.length !== 0 && "fill-white"} size-7`}/>
+          </Button> 
+            </div>
           <Image
             width={470}
             height={628}
@@ -137,6 +161,7 @@ const ProductDetails = ({ product }) => {
             blurDataURL={`/images/products/${imageLink}`}
             src={`/images/products/${imageLink}`}
           />
+          </div>
         </div>
       </div>
       {/* Description */}

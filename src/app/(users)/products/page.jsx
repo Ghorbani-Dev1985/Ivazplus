@@ -5,11 +5,15 @@ import React from "react";
 import CategorySidebar from "./[slug]/CategorySidebar";
 import queryString from "query-string";
 import ProductsSort from "./[slug]/ProductsSort";
+import { cookies } from 'next/headers'
 import ProductsBreadcrumb from "@/Features/Products/ProductsBreadcrumb";
+import { ToStringCookies } from "src/utils/ToStringCookies";
 export const dynamic = "force-dynamic"; // eq to {cache  : "no-store"} or SSR in pages directory
 
 const Products = async ({ searchParams }) => {
-  const productsPromise = GetProducts(queryString.stringify(searchParams));
+  const cookieStore = cookies();
+  const strCookies = ToStringCookies(cookieStore);
+  const productsPromise = GetProducts(queryString.stringify(searchParams), strCookies);
   const categoryPromise = GetCategories();
   const [{ products }, { categories }] = await Promise.all([
     productsPromise,
