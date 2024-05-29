@@ -1,31 +1,28 @@
-import { productsListInPanel, userListTableHeads, userPaymentTHeads } from "@/Constants/TableHeaders";
+import { productsListInPanel, userListTableHeads } from "@/Constants/TableHeaders";
 import CustomTable from "@/UI/CustomTable";
 import ModalPlacement from "@/UI/ModalPlacement";
-import { Chip, TableCell, TableRow } from "@nextui-org/react";
+import { TableCell, TableRow } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
 import { BiShow } from "react-icons/bi";
+import { HiMiniCheckCircle, HiNoSymbol } from "react-icons/hi2";
 import ToLocalDateStringShort from "src/utils/ToLocalDateStringShort";
 
 
 const UsersList = ({userArrayItem}) => {
-  const renderUsersCeLL = useCallback((item, columnKey) => {
-        const cellValue = item[columnKey];
+  const renderUsersCell = useCallback((user, columnKey) => {
+    const cellValue = user[columnKey];
         switch (columnKey) {
-          case "invoiceNum":
-            return item.invoiceNumber;
-          case "desc":
-            return (
-              <ModalPlacement
-                icon={<BiShow className="size-5 fill-sky-500" />}
-                btnText="مشاهده"
-                title="توضیحات"
-              >
-                {item.description}
-              </ModalPlacement>
-            );
-          case "products":
+          case "name":
+            return user.name;
+          case "biography":
+            return user.biography;
+          case "email":
+            return user.email;
+          case "phoneNumber":
+            return user.isVerifiedPhoneNumber ? <p className="text-emerald-500 flex-center gap-x-1"><HiMiniCheckCircle className="size-5"/>{user.phoneNumber}</p> : <p className="text-rose-500 flex-center gap-x-1"><HiNoSymbol className="size-5"/>{user.phoneNumber}</p>;
+          case "Products":
             return (
               <ModalPlacement
                 icon={<BiShow className="size-5 fill-sky-500" />}
@@ -34,9 +31,9 @@ const UsersList = ({userArrayItem}) => {
               >
                 <CustomTable 
                   headerItems={productsListInPanel}
-                  itemsArray={item.cart.productDetail}
+                  itemsArray={user.Products}
                 >
-                  {item.cart.productDetail.map(
+                  {user.Products.map(
                     ({
                       _id,
                       imageLink,
@@ -73,22 +70,10 @@ const UsersList = ({userArrayItem}) => {
                 </CustomTable>
               </ModalPlacement>
             );
-          case "price":
-            return item.amount.toLocaleString();
-          case "date":
-            return ToLocalDateStringShort(item.createdAt);
-          case "paymentWay":
-            return item.paymentMethod === "ZARINPAL" && "زرین پال";
-          case "status":
-            return item.status === "COMPLETED" ? (
-              <Chip color="success" variant="solid" className="text-white">
-                موفق
-              </Chip>
-            ) : (
-              <Chip color="warning" variant="solid" className="text-white">
-                ناموفق
-              </Chip>
-            );
+          case "createdAt":
+              return ToLocalDateStringShort(user.createdAt);
+          case "role":
+            return user.role === "ADMIN" ? "ادمین" : "کاربر"
           default:
             return cellValue;
         }
@@ -97,8 +82,7 @@ const UsersList = ({userArrayItem}) => {
         <CustomTable
         headerItems={userListTableHeads}
         itemsArray={userArrayItem}
-        renderCell={renderUsersCeLL}
-      ></CustomTable>
+        renderCell={renderUsersCell}></CustomTable>
       )
 }
  

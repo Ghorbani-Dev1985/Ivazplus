@@ -21,7 +21,7 @@ const CheckOTPForm = ({ phoneNumber, onResendOtp, otpResponse, onBack }) => {
   const CheckOtpHandler = async (event) => {
     event.preventDefault();
     try {
-      const { message, user } = await mutateCheckOtp({ phoneNumber, otp });
+      const { message, user } = await mutateCheckOtp({ phoneNumber , otp });
       toast.success(message);
       if (user.isActive) {
         router.replace("/");

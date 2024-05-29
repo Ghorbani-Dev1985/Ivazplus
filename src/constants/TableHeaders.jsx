@@ -58,27 +58,31 @@ export const productsListInPanel = [
 
 export const userListTableHeads = [
     {
-      id: 1,
+      id: "name",
       label: "نام",
     },
     {
-      id: 2,
+        id: "biography",
+        label: "بایوگرافی",
+      },
+    {
+      id: "email",
       label: "ایمیل",
     },
     {
-      id: 3,
+      id: "phoneNumber",
       label: "شماره موبایل",
     },
     {
-      id: 4,
+      id: "Products",
       label: "محصولات",
     },
     {
-      id: 5,
+      id: "createdAt",
       label: "تاریخ پیوستن",
     },
     {
-      id: 6,
-      label: "مشاهده",
+      id: "role",
+      label: "نقش",
     },
   ];

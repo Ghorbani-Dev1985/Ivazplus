@@ -30,7 +30,7 @@ const CartPage = () => {
       <div className="container my-8">
         {!user.cart?.products || user.cart?.products.length === 0 ? (
           <>
-            <Alert alertText="کاربر گرامی سبد خرید شما خالی می باشد">
+            <Alert alertText="کاربر گرامی سبد خرید شما خالی می باشد"> - 
               <Link href="/products" className="text-sky-600">
                 رفتن به صفحه محصولات
               </Link>
