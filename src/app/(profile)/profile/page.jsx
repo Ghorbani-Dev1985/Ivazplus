@@ -6,6 +6,7 @@ import ToLocalDateStringShort from "src/utils/ToLocalDateStringShort";
 import OrderList from "./order/OrderList";
 import Link from "next/link";
 import { HiArrowLongLeft } from "react-icons/hi2";
+import TitleLink from "@/UI/TitleLink";
 
 const Profile = () => {
   const title = useTitle("پروفایل کاربری | ایواز پلاس");
@@ -24,12 +25,7 @@ const Profile = () => {
         </span>
       </p>
       <div className="flex flex-col items-center">
-        <div className="w-full flex-between">
-        <p className="font-danaMedium md:text-xl self-start mt-4 mb-10 text-zinc-700 dark:text-white">
-          آخرین سفارشات
-        </p>
-        <Link href="/profile/order" className="flex-center gap-x-1 bg-sky-100 hover:bg-sky-200 text-sky-500 p-2 rounded-xl transition-colors"><HiArrowLongLeft className="size-6"/> مشاهده همه سفارشات</Link>
-        </div>
+        <TitleLink title=" آخرین سفارشات" href="/profile/order" icon={<HiArrowLongLeft className="size-6"/>} linkText="مشاهده همه سفارشات " />
         <OrderList
           paymentArrayItem={payments
             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
