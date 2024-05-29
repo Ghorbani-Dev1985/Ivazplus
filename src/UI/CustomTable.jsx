@@ -20,6 +20,7 @@ const CustomTable = ({ children, headerItems, itemsArray, renderCell }) => {
   }, [page, itemsArray]);
   return (
     <Table
+    isStriped
       aria-label="orders"
       bottomContent={
         <div className="flex w-full justify-center">

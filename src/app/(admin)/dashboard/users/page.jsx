@@ -8,7 +8,6 @@ const Users = () => {
   const title = useTitle("کاربرها | ایواز پلاس")
    const { data, isLoading } = useGetUsers();
    const {users} = data || {};
-   console.log(users)
    if(isLoading) return <Loading />
    if(users.length === 0) return <Alert alertText="هیچ کاربری یافت نشد"></Alert>
     return ( 
