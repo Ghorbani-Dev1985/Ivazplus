@@ -1,5 +1,5 @@
 import { createPayment } from "@/Services/PaymentService";
-import Loading from "@/UI/Loding";
+import Loading from "@/UI/Loading";
 import { Button } from "@nextui-org/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
@@ -32,7 +32,7 @@ const CartSummery = ({ payDetail }) => {
         <div className="w-full flex-between">
           <p>سود شما از خرید</p>
           <p>
-            {totalOffAmount.toLocaleString()}  {totalOffAmount > 0 && "- تومان"}
+            {totalOffAmount.toLocaleString()} {totalOffAmount > 0 && "- تومان"}
           </p>
         </div>
         <div className="w-full flex-between font-bold">
@@ -43,16 +43,17 @@ const CartSummery = ({ payDetail }) => {
           هزینه ارسال بر اساس آدرس ، زمان و نحوه ارسال شما محاسبه و به این مبلغ
           اضافه خواهد شد
         </p>
-        {
-          isLoading ? <Loading /> : <Button
-          variant="bordered"
-          onPress={CreatePaymentHandler}
-          className="border-white text-white hover:bg-white hover:text-primary hover:opacity-100 py-5 transition-colors"
-        >
-          ادامه ثبت سفارش
-        </Button>
-        }
-      
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Button
+            variant="bordered"
+            onPress={CreatePaymentHandler}
+            className="border-white text-white hover:bg-white hover:text-primary hover:opacity-100 py-5 transition-colors"
+          >
+            ادامه ثبت سفارش
+          </Button>
+        )}
       </div>
       <div className="flex-center my-4">
         <Link

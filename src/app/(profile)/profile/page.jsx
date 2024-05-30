@@ -1,5 +1,5 @@
 "use client";
-import Loading from "@/UI/Loding";
+import Loading from "@/UI/Loading";
 import { useGetUser } from "src/hooks/useAuth";
 import useTitle from "src/hooks/useTitle";
 import ToLocalDateStringShort from "src/utils/ToLocalDateStringShort";
@@ -25,7 +25,12 @@ const Profile = () => {
         </span>
       </p>
       <div className="flex flex-col items-center">
-        <TitleLink title=" آخرین سفارشات" href="/profile/order" icon={<HiArrowLongLeft className="size-6"/>} linkText="مشاهده همه سفارشات " />
+        <TitleLink
+          title=" آخرین سفارشات"
+          href="/profile/order"
+          icon={<HiArrowLongLeft className="size-6" />}
+          linkText="مشاهده همه سفارشات "
+        />
         <OrderList
           paymentArrayItem={payments
             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))

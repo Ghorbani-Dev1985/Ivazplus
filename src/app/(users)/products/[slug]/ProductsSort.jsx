@@ -24,7 +24,6 @@ const ProductsSort = () => {
     const value = e.target.attributes.value.nodeValue;
     router.push(pathname + "?" + CreateQueryString("sort" , value))
   };
-  console.log(searchParams.get("sort"))
   return (
     <section className="flex-between mb-6">
               <Select

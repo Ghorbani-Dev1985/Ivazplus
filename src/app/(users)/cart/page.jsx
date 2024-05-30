@@ -2,7 +2,7 @@
 
 import Alert from "@/UI/Alert";
 import AppBreadcrumb from "@/UI/AppBreadcrumb";
-import Loading from "@/UI/Loding";
+import Loading from "@/UI/Loading";
 import { BreadcrumbItem } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,9 @@ const CartPage = () => {
       <div className="container my-8">
         {!user.cart?.products || user.cart?.products.length === 0 ? (
           <>
-            <Alert alertText="کاربر گرامی سبد خرید شما خالی می باشد"> - 
+            <Alert alertText="کاربر گرامی سبد خرید شما خالی می باشد">
+              {" "}
+              -
               <Link href="/products" className="text-sky-600">
                 رفتن به صفحه محصولات
               </Link>
@@ -42,7 +44,12 @@ const CartPage = () => {
             <div className="w-full lg:w-3/4">
               {cart &&
                 cart.productDetail.map((item) => {
-                  return <React.Fragment key={item._id}> <CartItem cartItem={item} /></React.Fragment>;
+                  return (
+                    <React.Fragment key={item._id}>
+                      {" "}
+                      <CartItem cartItem={item} />
+                    </React.Fragment>
+                  );
                 })}
             </div>
             {/* Cart Summery */}

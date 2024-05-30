@@ -1,6 +1,6 @@
 "use client";
 import { CheckOtp } from "@/Services/AuthServices";
-import Loading from "@/UI/Loding";
+import Loading from "@/UI/Loading";
 import { Button } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -21,7 +21,7 @@ const CheckOTPForm = ({ phoneNumber, onResendOtp, otpResponse, onBack }) => {
   const CheckOtpHandler = async (event) => {
     event.preventDefault();
     try {
-      const { message, user } = await mutateCheckOtp({ phoneNumber , otp });
+      const { message, user } = await mutateCheckOtp({ phoneNumber, otp });
       toast.success(message);
       if (user.isActive) {
         router.replace("/");

@@ -1,6 +1,6 @@
 "use client";
 import { UpdateProfile } from "@/Services/AuthServices";
-import Loading from "@/UI/Loding";
+import Loading from "@/UI/Loading";
 import TextField from "@/UI/TextField";
 import { Button } from "@nextui-org/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -21,25 +21,25 @@ const MePage = () => {
   });
   const { user } = data || {};
   let userInfos = {
-        name: user?.name,
-        phoneNumber: user?.phoneNumber,
-        email: user?.email,
-        biography: user?.biography
-      }
+    name: user?.name,
+    phoneNumber: user?.phoneNumber,
+    email: user?.email,
+    biography: user?.biography,
+  };
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors },
-  } = useForm({mode: "all" });
+  } = useForm({ mode: "all" });
   useEffect(() => {
     reset({
       name: userInfos.name,
       phoneNumber: userInfos.phoneNumber,
       email: userInfos.email,
-      biography: userInfos.biography
-    })
-  },[user])
+      biography: userInfos.biography,
+    });
+  }, [user]);
   const UpdateProfileHandler = async (data) => {
     try {
       const { message } = await mutateAsync(data);
@@ -55,7 +55,10 @@ const MePage = () => {
       <span className="font-danaMedium md:text-xl self-start mt-4 mb-10 text-zinc-700 dark:text-white">
         جزییات حساب کاربری
       </span>
-      <form onSubmit={handleSubmit(UpdateProfileHandler)} className="w-full max-w-xl space-y-9">
+      <form
+        onSubmit={handleSubmit(UpdateProfileHandler)}
+        className="w-full max-w-xl space-y-9"
+      >
         <TextField
           label=" نام و نام خانوادگی"
           name="name"
@@ -149,16 +152,17 @@ const MePage = () => {
           errors={errors}
           placeholder=" لطفا بایوگرافی خود را وارد نمایید"
         />
-         {
-          isLoading ? <Loading /> :
-         <Button
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Button
             type="submit"
             color="primary"
             className="w-full hover:bg-secondary hover:opacity-100 rounded-lg py-6"
           >
             ثبت اطلاعات
           </Button>
-         }
+        )}
       </form>
     </div>
   );

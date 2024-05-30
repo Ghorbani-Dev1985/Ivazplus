@@ -1,5 +1,5 @@
 "use client";
-import Loading from "@/UI/Loding";
+import Loading from "@/UI/Loading";
 import TextField from "@/UI/TextField";
 import { Button, Divider } from "@nextui-org/react";
 import Link from "next/link";

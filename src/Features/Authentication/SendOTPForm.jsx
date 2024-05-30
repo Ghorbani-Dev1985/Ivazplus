@@ -1,14 +1,22 @@
-import Loading from "@/UI/Loding";
+import Loading from "@/UI/Loading";
 import TextField from "@/UI/TextField";
 import { Button } from "@nextui-org/react";
 
-const SendOTPForm = ({SendOtpHandler , register , isPendingOtp , errors}) => {
- 
-    return ( 
-        <>
-         <h2 className="text-2xl my-6"> ورود | ثبت نام</h2>
-         <form onSubmit={SendOtpHandler} className="w-full max-w-sm space-y-10 mb-8">
-         <TextField type="tel" label="شماره موبایل" name="phoneNumber" required register={register}  validationSchema={{
+const SendOTPForm = ({ SendOtpHandler, register, isPendingOtp, errors }) => {
+  return (
+    <>
+      <h2 className="text-2xl my-6"> ورود | ثبت نام</h2>
+      <form
+        onSubmit={SendOtpHandler}
+        className="w-full max-w-sm space-y-10 mb-8"
+      >
+        <TextField
+          type="tel"
+          label="شماره موبایل"
+          name="phoneNumber"
+          required
+          register={register}
+          validationSchema={{
             required: "لطفا شماره موبایل را وارد نمایید",
             minLength: {
               value: 11,
@@ -24,20 +32,24 @@ const SendOTPForm = ({SendOtpHandler , register , isPendingOtp , errors}) => {
               message: "لطفا شماره موبایل صحیح وارد نمایید",
             },
           }}
-          errors={errors} ltr placeholder=" لطفا شماره موبایل خود را وارد نمایید"/>
-         {
-          isPendingOtp ? <Loading /> :
-         <Button
+          errors={errors}
+          ltr
+          placeholder=" لطفا شماره موبایل خود را وارد نمایید"
+        />
+        {isPendingOtp ? (
+          <Loading />
+        ) : (
+          <Button
             type="submit"
             color="primary"
             className="w-full hover:bg-secondary hover:opacity-100 rounded-lg py-6"
           >
             ارسال کد تایید
           </Button>
-         }
-         </form>
-        </>
-     );
-}
- 
+        )}
+      </form>
+    </>
+  );
+};
+
 export default SendOTPForm;
