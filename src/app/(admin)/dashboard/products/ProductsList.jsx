@@ -1,8 +1,10 @@
 import { productListTableTHeads} from "@/Constants/TableHeaders";
 import CustomTable from "@/UI/CustomTable";
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
+import { BiEditAlt, BiTrash } from "react-icons/bi";
 import ToLocalDateStringShort from "src/utils/ToLocalDateStringShort";
 
 const ProductsList = ({productArrayItem}) => {
@@ -33,7 +35,10 @@ const ProductsList = ({productArrayItem}) => {
           case "quantity":
             return product.quantity
           case "act":
-            return ""
+            return <div className="flex-between gap-x-1.5">
+               <button><Link href={`/dashboard/products/edit/${product._id}`}><BiEditAlt className="size-6 text-sky-500" /></Link></button>
+               <button><BiTrash className="size-6 text-rose-500" /></button>
+            </div>
           default:
             return cellValue;
         }

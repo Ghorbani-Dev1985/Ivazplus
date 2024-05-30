@@ -13,10 +13,10 @@ const ProductForm = ({
   register,
   errors,
   handleSubmit,
-  control
+  control,
+  getCategory
 }) => {
-
-
+  console.log(getCategory)
   return (
     <form
       onSubmit={handleSubmit(handler)}
@@ -95,8 +95,7 @@ const ProductForm = ({
               }}
               color="default"
               label="دسته بندی"
-              placeholder="یکی از موارد را انتخاب نمایید"
-              defaultSelectedKeys={["0"]}
+              placeholder={getCategory ? getCategory : "یکی از موارد را انتخاب نمایید"}
             >
               <SelectItem isReadOnly key="0" className="text-gray-400/50">
                 یکی از موارد را انتخاب نمایید
@@ -107,7 +106,6 @@ const ProductForm = ({
                     key={_id}
                     value={_id}
                     className="py-3"
-                    
                   >
                     {title}
                   </SelectItem>

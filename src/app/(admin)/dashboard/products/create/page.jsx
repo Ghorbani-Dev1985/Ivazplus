@@ -10,6 +10,7 @@ import useTitle from "src/hooks/useTitle";
 const CreateProduct = () => {
   const title = useTitle("افزودن محصول | ایواز پلاس");
   const { data } = useGetCategories();
+  const { categories } = data || {};
   const {
     register,
     formState: { errors },
@@ -18,7 +19,6 @@ const CreateProduct = () => {
     reset
   } = useForm({ mode: "all" });
   const { isPending , mutateAsync } = useAddProduct();
-  const { categories } = data || {};
   const [tags, setTags] = useState([]);
   const CreateProductHandler = async (data) => {
     try {
