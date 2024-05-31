@@ -10,7 +10,6 @@ const Products = () => {
   const title = useTitle("محصولات | ایواز پلاس");
   const { data, isLoading } = useGetProducts();
   const { products } = data || {};
-  console.log(products);
   if (isLoading) return <Loading />;
   if (products.length === 0)
     return <Alert alertText="هیچ محصولی یافت نشد"></Alert>;
