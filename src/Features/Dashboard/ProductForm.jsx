@@ -16,7 +16,6 @@ const ProductForm = ({
   control,
   getCategory
 }) => {
-  console.log(getCategory)
   return (
     <form
       onSubmit={handleSubmit(handler)}

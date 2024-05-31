@@ -27,7 +27,7 @@ const EditProduct = () => {
   const [getCategory , setGetCategory] = useState("")
   const EditProductHandler = async (data) => {
     try {
-      const { message } = await mutateAsync({ ...data, tags , productId: product._id});
+      const { message } = await mutateAsync({data: {...data}, tags , productId: product._id});
       toast.success(message);
       router.push("/dashboard/products")
     } catch (error) {
@@ -52,7 +52,7 @@ const EditProduct = () => {
       setTags(product.tags)
       setGetCategory(product.category.title)
     }
-  }, [product]);
+  }, [data]);
    if(isLoadingProduct) return <Loading />
     return ( 
         <div className="flex flex-col items-center">

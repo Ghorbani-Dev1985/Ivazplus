@@ -17,8 +17,8 @@ const ProductsList = ({productArrayItem}) => {
             height={90}
             alt="ghorbani-dev.ir"
             placeholder="blur"
-            blurDataURL={`/images/products/${product.imageLink}`}
-            src={`/images/products/${product.imageLink}`}
+            blurDataURL={product.imageLink ? `/images/products/${product.imageLink}` : '/images/noImage/noImage.jpg'}
+            src={product.imageLink ? `/images/products/${product.imageLink}` : '/images/noImage/noImage.jpg'}
           />
           case "title":
             return <Link target="_blank" href={`/products/${product.slug}`} className="font-semibold hover:text-primary transition-colors">{product.title}</Link>;
