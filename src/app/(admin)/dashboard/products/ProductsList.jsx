@@ -1,6 +1,6 @@
 import { productListTableTHeads} from "@/Constants/TableHeaders";
 import CustomTable from "@/UI/CustomTable";
-import { Button } from "@nextui-org/react";
+import { Button, Chip } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
@@ -26,6 +26,12 @@ const ProductsList = ({productArrayItem}) => {
                 return <p className="text-nowrap">{ToLocalDateStringShort(product.createdAt)}</p>
           case "categoryTitle":
             return <p className="text-nowrap">{product.category.title}</p>;
+          case "tags":
+            return product.tags.map((tag , index) => {
+              return(
+               <div key={index}> <Chip className="mb-2">{tag}</Chip></div>
+              )
+            })
           case "price":
             return product.price.toLocaleString();
           case "discount":

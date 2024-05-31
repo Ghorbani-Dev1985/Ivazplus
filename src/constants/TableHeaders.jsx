@@ -105,6 +105,10 @@ export const productListTableTHeads = [
     label: "دسته بندی",
   },
   {
+    id: "tags",
+    label: "تگ ها",
+  },
+  {
     id: "price",
     label: "قیمت‌(تومان)",
   },
