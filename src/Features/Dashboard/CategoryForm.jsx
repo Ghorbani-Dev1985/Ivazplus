@@ -1,4 +1,4 @@
-import { categoryType } from "@/Constants/CategoriesItems";
+import { categoryTypeList } from "@/Constants/CategoriesItems";
 import Loading from "@/UI/Loading";
 import TextField from "@/UI/TextField";
 import { Button, Select, SelectItem } from "@nextui-org/react";
@@ -12,7 +12,6 @@ const CategoryForm = ({
   errors,
   handleSubmit,
   control,
-  getCategory
 }) => {
   return (
     <form
@@ -92,13 +91,13 @@ const CategoryForm = ({
               }}
               color="default"
               label="نوع"
-              placeholder={getCategory ? getCategory : "انتخاب نوع"}
+              placeholder={"انتخاب نوع"}
               defaultSelectedKeys={["0"]}
             >
               <SelectItem isReadOnly key="0" className="text-gray-400/50">
                انتخاب نوع
               </SelectItem>
-              {categoryType?.map(({ id, label }) => {
+              {categoryTypeList?.map(({ id, label }) => {
                 return (
                   <SelectItem
                     key={id}
@@ -130,7 +129,7 @@ const CategoryForm = ({
               }}
               color="default"
               label="دسته بندی اصلی"
-              placeholder={getCategory ? getCategory : " انتخاب دسته بندی اصلی"}
+              placeholder=" انتخاب دسته بندی اصلی"
             >
               <SelectItem isReadOnly key="0" className="text-gray-400/50">
                انتخاب دسته بندی اصلی

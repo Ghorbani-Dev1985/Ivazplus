@@ -1,4 +1,4 @@
-import { categoryListTableTHeads, productListTableTHeads} from "@/Constants/TableHeaders";
+import { categoryListTableTHeads} from "@/Constants/TableHeaders";
 import CustomTable from "@/UI/CustomTable";
 import { Chip } from "@nextui-org/react";
 import Link from "next/link";
@@ -20,6 +20,11 @@ const CategoriesList = ({categoryArrayItem}) => {
             return <Chip color="primary">{category.type === "product" ? "محصول" : category.type === "comment" ? "نظر" : category.type === "post" ? "مقاله" : "تیکت"}</Chip>
           case "description":
             return category.description;
+            case "act":
+              return <div className="flex-between gap-x-1.5">
+                 <button><Link href={`/dashboard/categories/edit/${category._id}`}><BiEditAlt className="size-6 text-sky-500" /></Link></button>
+                 <button><BiTrash className="size-6 text-rose-500" /></button>
+              </div>
           default:
             return cellValue;
         }

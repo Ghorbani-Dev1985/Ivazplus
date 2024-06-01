@@ -20,17 +20,16 @@ const CreateProduct = () => {
   } = useForm({ mode: "all" });
   const { isPending , mutateAsync } = useAddCategory();
   const CreateCategoryHandler = async (data) => {
-    console.log(data.type)
-    // try {
-    //   const { message } = await mutateAsync({...data});
-    //   toast.success(message);
-    //   router.push("/dashboard/categories")
-    //   reset();
-    // } catch (error) {
-    //   if (error?.response?.data) {
-    //     toast.error(error.response.data.message);
-    //   }
-    // }
+    try {
+      const { message } = await mutateAsync({...data});
+      toast.success(message);
+      router.push("/dashboard/categories")
+      reset();
+    } catch (error) {
+      if (error?.response?.data) {
+        toast.error(error.response.data.message);
+      }
+    }
   };
 
   return (

@@ -36,7 +36,7 @@ export const categoriesItems = [
     }
 ]
 
-export const categoryType = [
+export const categoryTypeList = [
     {
         id: "product",
         label: "محصول"

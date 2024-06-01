@@ -152,4 +152,8 @@ export const categoryListTableTHeads = [
     id: "description",
     label: "توضیحات"
   },
+  {
+    id: "act",
+    label: "عملیات",
+  },
 ]
