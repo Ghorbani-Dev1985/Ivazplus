@@ -25,6 +25,7 @@ const CreateProduct = () => {
       const { message } = await mutateAsync({ ...data, tags });
       toast.success(message);
       reset();
+      setTags([])
     } catch (error) {
       if (error?.response?.data) {
         toast.error(error.response.data.message);

@@ -49,6 +49,7 @@ module.exports = {
            success: 'rgb(0 , 192 , 115)',
            warning: 'rgb(255 , 153 , 0)',
            error:   'rgb(255,71 , 87)',
+           info: '#0ea5e9',
        },
        fontFamily: {
         IranYekan: ["var(--font-IranYekan)"],

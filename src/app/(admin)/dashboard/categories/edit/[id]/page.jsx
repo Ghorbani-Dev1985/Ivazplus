@@ -2,7 +2,7 @@
 import CategoryForm from "@/Features/Dashboard/CategoryForm";
 import Loading from "@/UI/Loading";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useGetCategories, useGetCategoryById, useUpdateCategory } from "src/hooks/useCategories";
@@ -16,6 +16,7 @@ const EditProduct = () => {
     const {category} = data || {};
     const { data : categoriesData } = useGetCategories();
     const { isPending, mutateAsync } = useUpdateCategory();
+    const [categoryType , setCategoryType] = useState("")
   const { categories } = categoriesData || {};
   const {
     register,
@@ -43,6 +44,7 @@ const EditProduct = () => {
          englishTitle: category.englishTitle,
          description: category.description,
       });
+      setCategoryType(category.type)
     }
   }, [data]);
    if(isLoadingCategory) return <Loading />
@@ -59,6 +61,7 @@ const EditProduct = () => {
         errors={errors}
         handleSubmit={handleSubmit}
         control={control}
+        categoryType={categoryType}
       />
         </div>
      );

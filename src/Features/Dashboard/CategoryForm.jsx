@@ -12,7 +12,9 @@ const CategoryForm = ({
   errors,
   handleSubmit,
   control,
+  categoryType
 }) => {
+  const filterType = categoryTypeList.find((c) => c.id === categoryType)
   return (
     <form
       onSubmit={handleSubmit(handler)}
@@ -91,12 +93,8 @@ const CategoryForm = ({
               }}
               color="default"
               label="نوع"
-              placeholder={"انتخاب نوع"}
-              defaultSelectedKeys={["0"]}
+             placeholder={filterType ? filterType.label : "انتخاب نوع"}
             >
-              <SelectItem isReadOnly key="0" className="text-gray-400/50">
-               انتخاب نوع
-              </SelectItem>
               {categoryTypeList?.map(({ id, label }) => {
                 return (
                   <SelectItem
