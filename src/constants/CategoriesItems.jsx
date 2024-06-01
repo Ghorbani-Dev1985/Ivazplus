@@ -1,4 +1,4 @@
-const categoriesItems = [
+export const categoriesItems = [
     {
         id: 1, 
         image: "cat01.jpg",
@@ -36,4 +36,21 @@ const categoriesItems = [
     }
 ]
 
-export default categoriesItems;
+export const categoryType = [
+    {
+        id: "product",
+        label: "محصول"
+    },
+    {
+        id: "comment",
+        label: "نظر‌"
+    },
+    {
+        id: "post",
+        label: "مقاله‌"
+    },
+    {
+        id: "ticket",
+        label: "تیکت"
+    },
+]

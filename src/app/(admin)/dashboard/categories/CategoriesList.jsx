@@ -1,7 +1,6 @@
 import { categoryListTableTHeads, productListTableTHeads} from "@/Constants/TableHeaders";
 import CustomTable from "@/UI/CustomTable";
-import { Button, Chip } from "@nextui-org/react";
-import Image from "next/image";
+import { Chip } from "@nextui-org/react";
 import Link from "next/link";
 import { useCallback } from "react";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
@@ -18,7 +17,7 @@ const CategoriesList = ({categoryArrayItem}) => {
           case "englishTitle":
             return <p className="text-nowrap">{category.englishTitle}</p>;
           case "type":
-            return category.type === "product" ? "محصول" : "خدمات"
+            return <Chip color="primary">{category.type === "product" ? "محصول" : category.type === "comment" ? "نظر" : category.type === "post" ? "مقاله" : "تیکت"}</Chip>
           case "description":
             return category.description;
           default:
@@ -34,27 +33,3 @@ const CategoriesList = ({categoryArrayItem}) => {
 }
  
 export default CategoriesList;
-
-
-
-//createdAt
-// : 
-// "2024-05-23T13:20:23.210Z"
-// description
-// : 
-// "لباس زنانه ایواز پلاس"
-// englishTitle
-// : 
-// "womenCloth"
-// icon
-// : 
-// {sm: null, lg: null}
-// parentId
-// : 
-// null
-// title
-// : 
-// "لباس زنانه"
-// type
-// : 
-// "product"

@@ -1,5 +1,5 @@
 import SectionTitle from "@/UI/SectionTitle";
-import categoriesItems from "src/constants/CategoriesItems";
+import {categoriesItems} from "src/constants/CategoriesItems";
 import Image from "next/image";
 import Link from "next/link";
 const Categories = () => {

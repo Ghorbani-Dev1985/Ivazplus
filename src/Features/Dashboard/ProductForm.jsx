@@ -57,7 +57,7 @@ const ProductForm = ({
           },
         }}
         errors={errors}
-        placeholder=" لطفا لینک را وارد نمایید"
+        placeholder=" لطفا توضیحات را وارد نمایید"
       />
       <TextField
         label=" لینک"
@@ -77,7 +77,7 @@ const ProductForm = ({
         }}
         errors={errors}
         ltr
-        placeholder=" لطفا نام برند را وارد نمایید"
+        placeholder=" لطفا لینک را وارد نمایید"
       />
       <Controller
         control={control}
@@ -136,7 +136,7 @@ const ProductForm = ({
           },
         }}
         errors={errors}
-        placeholder=" لطفا قیمت را وارد نمایید"
+        placeholder=" لطفا نام برند را وارد نمایید"
       />
       <div>
         <label>تگ محصول</label>
@@ -213,7 +213,7 @@ const ProductForm = ({
         }}
         errors={errors}
         ltr
-        placeholder=" لطفا موجودی را وارد نمایید"
+        placeholder=" لطفا قیمت با تخفیف را وارد نمایید"
       />
       <TextField
         type="number"
@@ -234,7 +234,7 @@ const ProductForm = ({
         }}
         errors={errors}
         ltr
-        placeholder=" لطفا لینک تصویر را وارد نمایید"
+        placeholder=" لطفا موجودی را وارد نمایید"
       />
       <TextField
         label=" لینک تصویر"
