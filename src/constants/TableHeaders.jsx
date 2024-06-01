@@ -157,3 +157,58 @@ export const categoryListTableTHeads = [
     label: "عملیات",
   },
 ]
+
+
+export const orderListTableTHeads = [
+  {
+    id: "invoiceNumber",
+    label: "شماره فاکتور"
+  },
+  {
+    id: "user",
+    label: "مشخصات کاربر"
+  },
+  {
+    id: "description",
+    label: "توضیحات"
+  },
+  {
+      id: "productDetail",
+      label: "مشخصات محصول"
+  },
+  {
+    id: "paymentDate",
+    label: " تاریخ پرداخت"
+  },
+  {
+    id: "amount",
+    label: "  مبلغ(تومان)"
+  },
+  {
+    id: "isPaid",
+    label: "  وضعیت پرداخت"
+  },
+  {
+    id: "paymentMethod",
+    label: " روش پرداخت"
+  },
+  {
+    id: "status",
+    label: " وضعیت تراکنش"
+  },
+]
+
+export const orderUserTableTHeads = [
+  {
+  id : 1,
+  label: "نام کامل"
+  },
+  {
+    id : 2,
+    label: "ایمیل"
+    },
+    {
+      id : 3,
+      label: "تلفن تماس"
+      },
+]

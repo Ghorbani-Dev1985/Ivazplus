@@ -63,18 +63,18 @@ const Sidebar = () => {
           </li>
           <li>
             <Link
-              href="/dashboard/coupons"
+              href="/dashboard/orders"
               className="bg-gradient-to-l from-white via-white/80 font-semibold p-2 rounded-lg flex items-center gap-x-1.5"
             >
-              <HiOutlineTicket className="size-5" /> کد تخفیف
+              <HiOutlineCreditCard className="size-5" /> سفارشات
             </Link>
           </li>
           <li>
             <Link
-              href="/dashboard/payment"
+              href="/dashboard/coupons"
               className="bg-gradient-to-l from-white via-white/80 font-semibold p-2 rounded-lg flex items-center gap-x-1.5"
             >
-              <HiOutlineCreditCard className="size-5" /> گزارش پرداخت
+              <HiOutlineTicket className="size-5" /> کد تخفیف
             </Link>
           </li>
           <li>
