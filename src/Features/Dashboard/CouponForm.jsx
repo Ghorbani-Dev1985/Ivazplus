@@ -1,8 +1,16 @@
 import Loading from "@/UI/Loading";
 import TextField from "@/UI/TextField";
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import {
+  Button,
+  Radio,
+  RadioGroup,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
 import { Controller } from "react-hook-form";
-import { TagsInput } from "react-tag-input-component";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+import DatePicker from "react-multi-date-picker";
 
 const CouponForm = ({
   handler,
@@ -19,25 +27,6 @@ const CouponForm = ({
       onSubmit={handleSubmit(handler)}
       className="w-full md:max-w-screen-md space-y-5"
     >
-      <TextField
-        label=" نوع"
-        name="type"
-        required
-        register={register}
-        validationSchema={{
-          required: "لطفا نوع را وارد نمایید",
-          minLength: {
-            value: 3,
-            message: "حداقل ۳ کاراکتر وارد نمایید  ",
-          },
-          maxLength: {
-            value: 25,
-            message: "حداکثر ۲۵ کاراکتر وارد نمایید",
-          },
-        }}
-        errors={errors}
-        placeholder=" لطفا توضیحات را وارد نمایید"
-      />
       <TextField
         label=" کد تخفیف"
         name="code"
@@ -59,26 +48,27 @@ const CouponForm = ({
         placeholder=" لطفا کدتخفیف را وارد نمایید"
       />
       <TextField
-        label=" مبلغ(تومان)"
+        label="مقدار"
         type="number"
         name="amount"
         required
         register={register}
         validationSchema={{
-          required: "لطفا مبلغ را وارد نمایید",
+          required: "لطفا مقدار را وارد نمایید",
           min: {
             value: 1,
-            message: "حداقل ۱ تومان وارد نمایید  ",
+            message: "لطفا حداقل مقدار ۱ را وارد نمایید",
           },
         }}
         errors={errors}
         ltr
-        placeholder=" لطفا مبلغ را وارد نمایید"
+        placeholder=" لطفا مقدار را وارد نمایید"
       />
       <TextField
         label=" تعداد استفاده "
         type="number"
         name="usageLimit"
+        ltr
         required
         register={register}
         validationSchema={{
@@ -93,9 +83,41 @@ const CouponForm = ({
       />
       <Controller
         control={control}
+        name="type"
+        rules={{
+          required: true,
+        }}
+        render={({ field }) => {
+          return (
+            <RadioGroup
+              {...field}
+              ref={(ref) => {
+                if (ref && !ref.focus) ref.focus = () => {};
+              }}
+              label=" نوع"
+              orientation="horizontal"            
+              color="primary"
+            >
+              <Radio value="fixedProduct">
+                <span className="mr-1">قیمت ثابت </span>
+              </Radio>
+              <Radio value="percent">
+                <span className="mr-1">درصد</span>
+              </Radio>
+            </RadioGroup>
+          );
+        }}
+      />
+       {errors.type && (
+        <span className="block text-right text-rose-500 my-3 text-base">
+          لطفا نوع را انتخاب نمایید
+        </span>
+      )}
+      <Controller
+        control={control}
         name="productIds"
         rules={{
-          required: "لطفا یک محصول را انتخاب نمایید",
+          required: true,
         }}
         render={({ field }) => {
           return (
@@ -105,14 +127,13 @@ const CouponForm = ({
                 if (ref && !ref.focus) ref.focus = () => {};
               }}
               color="default"
-              label="دسته بندی"
+              label="محصولات"
+              isMultiline={true}
+              selectionMode="multiple"
               placeholder={
-                getCategory ? getCategory : "یک محصول را انتخاب نمایید"
+                getCategory ? getCategory : "محصول را انتخاب نمایید"
               }
             >
-              <SelectItem isReadOnly key="0" className="text-gray-400/50">
-                یک محصول را انتخاب نمایید
-              </SelectItem>
               {products?.map(({ _id, title }) => {
                 return (
                   <SelectItem key={_id} value={_id} className="py-3">
@@ -129,7 +150,32 @@ const CouponForm = ({
           لطفا یک محصول را انتخاب نمایید
         </span>
       )}
-
+      <Controller
+        control={control}
+        name="expireDate"
+        rules={{
+          required: "لطفا تاریخ انقضا را انتخاب نمایید",
+        }}
+        render={({ field }) => {
+          return (
+            <DatePicker
+              {...field}
+              monthYearSeparator="|"
+              format="YYYY/MM/DD"
+              formattingIgnoreList={["Date", "Time"]}
+              calendar={persian}
+              locale={persian_fa}
+              calendarPosition="bottom-center"
+              inputClass="textField-input dir-ltr"
+            />
+          );
+        }}
+      />
+      {errors.expireDate && (
+        <span className="block text-right text-rose-500 my-3 text-base">
+          لطفا تاریخ انقضا را انتخاب نمایید
+        </span>
+      )}
       {isPending ? (
         <Loading />
       ) : (

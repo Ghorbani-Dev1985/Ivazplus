@@ -1,14 +1,16 @@
 "use client";
-import ProductForm from "@/Features/Dashboard/ProductForm";
-import { useState } from "react";
+import CouponForm from "@/Features/Dashboard/CouponForm";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useAddProduct, useGetProducts } from "src/hooks/useProducts";
+import { useAddNewCoupon } from "src/hooks/useCoupons";
+import { useGetProducts } from "src/hooks/useProducts";
 import useTitle from "src/hooks/useTitle";
 
 const CreateCoupon = () => {
   const title = useTitle("افزودن کد تخفیف | ایواز پلاس");
-  const { data, isLoading } = useGetProducts();
+  const router = useRouter();
+  const { data } = useGetProducts();
   const { products } = data || {};
   const {
     register,
@@ -17,13 +19,16 @@ const CreateCoupon = () => {
     control,
     reset
   } = useForm({ mode: "all" });
-  const { isPending , mutateAsync } = useAddProduct();
+  const { isPending , mutateAsync } = useAddNewCoupon();
   const CreateCouponHandler = async (data) => {
+    const splitIds = data.productIds.split(',')
     try {
-      const { message } = await mutateAsync({ ...data, tags });
+      const { message } = await mutateAsync({...data , expireDate: new Date(data.expireDate).toISOString() , productIds: splitIds.map((id) => id)});
       toast.success(message);
+      router.push("/dashboard/coupons");
       reset();
     } catch (error) {
+      console.log(error)
       if (error?.response?.data) {
         toast.error(error.response.data.message);
       }
@@ -35,7 +40,7 @@ const CreateCoupon = () => {
       <span className="font-danaMedium md:text-xl self-start mt-4 mb-10 text-zinc-700 dark:text-white">
         افزودن کدتخفیف جدید
       </span>
-      <ProductForm
+      <CouponForm
         handler={CreateCouponHandler}
         products={products}
         isPending={isPending}
