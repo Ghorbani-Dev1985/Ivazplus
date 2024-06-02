@@ -1,4 +1,4 @@
-import { productListTableTHeads } from "@/Constants/TableHeaders";
+import { couponsListTableTHeads, productListTableTHeads } from "@/Constants/TableHeaders";
 import ConfirmModal from "@/UI/ConfimModal";
 import CustomTable from "@/UI/CustomTable";
 import { Button, Chip } from "@nextui-org/react";
@@ -11,7 +11,7 @@ import { BiEditAlt, BiTrash } from "react-icons/bi";
 import { useRemoveProduct } from "src/hooks/useProducts";
 import ToLocalDateStringShort from "src/utils/ToLocalDateStringShort";
 
-const CouponsList = ({ productArrayItem }) => {
+const CouponsList = ({ couponArrayItem }) => {
   const {mutateAsync} = useRemoveProduct();
   const queryClient = useQueryClient();
   const RemoveProductHandler = async (id) => {
@@ -25,79 +25,53 @@ const CouponsList = ({ productArrayItem }) => {
       }
     }
   }
-  const renderProductsCell = useCallback((product, columnKey) => {
-    const cellValue = product[columnKey];
+  const renderCouponsCell = useCallback((coupon, columnKey) => {
+    const cellValue = coupon[columnKey];
     switch (columnKey) {
-      case "imageLink":
-        return (
-          <Image
-            width={90}
-            height={90}
-            alt="ghorbani-dev.ir"
-            placeholder="blur"
-            blurDataURL={
-              product.imageLink
-                ? `/images/products/${product.imageLink}`
-                : "/images/noImage/noImage.jpg"
-            }
-            src={
-              product.imageLink
-                ? `/images/products/${product.imageLink}`
-                : "/images/noImage/noImage.jpg"
-            }
-          />
-        );
-      case "title":
-        return (
-          <Link
-            target="_blank"
-            href={`/products/${product.slug}`}
-            className="font-semibold hover:text-primary transition-colors"
-          >
-            {product.title}
-          </Link>
-        );
+      case "code": coupon.code
+        return 
       case "createdAt":
         return (
           <p className="text-nowrap">
-            {ToLocalDateStringShort(product.createdAt)}
+            {ToLocalDateStringShort(coupon.createdAt)}
+          </p>
+        ); 
+      case "expireDate":
+        return (
+          <p className="text-nowrap">
+            {ToLocalDateStringShort(coupon.expireDate)}
           </p>
         );
-      case "categoryTitle":
-        return <p className="text-nowrap">{product.category.title}</p>;
-      case "tags":
-        return product.tags.map((tag, index) => {
+      case "type":
+        return <p className="text-nowrap">{coupon.type === "fixedProduct" ? "قیمت ثابت" : "درصد"}</p>
+      case "productIds":
+        return coupon.productIds.map(({title, slug}) => {
           return (
-            <div key={index}>
-              {" "}
-              <Chip className="mb-2">{tag}</Chip>
-            </div>
+            <Link href={slug} key={title}>
+              <Chip color="default" className="mb-2">{title}</Chip>
+            </Link>
           );
         });
-      case "price":
-        return product.price.toLocaleString();
-      case "discount":
-        return product.discount > 0 ? (
-          <span>{product.discount} %</span>
-        ) : (
-          <p className="text-nowrap">بدون تخفیف</p>
-        );
-      case "offPrice":
-        return product.offPrice.toLocaleString();
-      case "quantity":
-        return product.quantity;
+      case "amount" : 
+      return coupon.amount.toLocaleString()
+      case "usageLimit":
+        return coupon.usageLimit;
+      case "usageCount":
+        return coupon.usageCount;
+      case "isActive":
+        return coupon.isActive ? <Chip color="success" className="text-white">فعال</Chip> : <Chip color="danger" className="text-white">غیرفعال</Chip>
       case "act":
         return (
           <div className="flex-between gap-x-1.5">
             <Button isIconOnly color="default" variant="light">
-              <Link href={`/dashboard/products/edit/${product._id}`}>
+              <Link href={`/dashboard/coupons/edit/${coupon._id}`}>
                 <BiEditAlt className="size-6 text-sky-500" />
               </Link>
             </Button>
             <ConfirmModal
-              btnIcon={<BiTrash className="size-6 text-rose-500" />} titleText="حذف محصول" confirmBtnText="حذف محصول" confirmBtnHandler={() => RemoveProductHandler(product._id)}
+              btnIcon={<BiTrash className="size-6 text-rose-500" />} titleText="حذف کد تخفیف" confirmBtnText="حذف کد تخفیف" confirmBtnHandler={() => RemoveProductHandler(coupon._id)}
             >
-              آیا برای حذف محصول <span className="text-rose-400">{product.title}</span> مطمعن هستید؟
+              آیا برای حذف کد تخفیف <span className="text-rose-400">{coupon.title}</span> مطمعن هستید؟
             </ConfirmModal>
           </div>
         );
@@ -107,9 +81,9 @@ const CouponsList = ({ productArrayItem }) => {
   }, []);
   return (
     <CustomTable
-      headerItems={productListTableTHeads}
-      itemsArray={productArrayItem}
-      renderCell={renderProductsCell}
+      headerItems={couponsListTableTHeads}
+      itemsArray={couponArrayItem}
+      renderCell={renderCouponsCell}
     ></CustomTable>
   );
 };

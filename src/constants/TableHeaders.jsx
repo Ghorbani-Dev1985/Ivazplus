@@ -212,3 +212,46 @@ export const orderUserTableTHeads = [
       label: "تلفن تماس"
       },
 ]
+
+export const couponsListTableTHeads = [
+  {
+    id: "code",
+    label: "کد"
+  },
+  {
+    id: "createdAt",
+    label: "تاریخ ایجاد"
+  },
+  {
+    id: "expireDate",
+    label: " تاریخ انقضا"
+  },
+  {
+      id: "type",
+      label: "نوع"
+  },
+  {
+    id: "productIds",
+    label: "محصولات"
+  },
+  {
+    id: "amount",
+    label: "مبلغ(تومان)"
+  },
+  {
+    id: "usageLimit",
+    label: " محدودیت استفاده"
+  },
+  {
+    id: "usageCount",
+    label: "تعداد استفاده"
+  },
+  {
+    id: "isActive",
+    label: " وضعیت"
+  },
+  {
+    id: "act",
+    label: " عملیات"
+  },
+]

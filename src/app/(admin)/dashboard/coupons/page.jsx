@@ -22,11 +22,11 @@ const Coupons = () => {
         icon={<HiMiniPlusCircle className="size-6" />}
         linkText="افزودن کد تخفیف جدید"
       />
-      {/* <CouponsList
-        productArrayItem={coupons.sort(
+      <CouponsList
+        couponArrayItem={coupons.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         )}
-      /> */}
+      />
     </div>
   );
 };
@@ -63,4 +63,4 @@ export default Coupons;
 // 0
 // usageLimit
 // : 
-11
+//11

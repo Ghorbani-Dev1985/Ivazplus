@@ -1,16 +1,11 @@
-import { orderListTableTHeads, orderUserTableTHeads, productListTableTHeads, productsListInPanel } from "@/Constants/TableHeaders";
-import ConfirmModal from "@/UI/ConfimModal";
+import { orderListTableTHeads, orderUserTableTHeads, productsListInPanel } from "@/Constants/TableHeaders";
 import CustomTable from "@/UI/CustomTable";
 import ModalPlacement from "@/UI/ModalPlacement";
-import { Button, Chip, TableCell, TableRow } from "@nextui-org/react";
-import { useQueryClient } from "@tanstack/react-query";
+import { Chip, TableCell, TableRow } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
-import toast from "react-hot-toast";
-import { BiEditAlt, BiShow, BiTrash } from "react-icons/bi";
-import { useRemoveProduct } from "src/hooks/useProducts";
-import ToLocalDateStringShort from "src/utils/ToLocalDateStringShort";
+import { BiShow } from "react-icons/bi";
 
 const OrdersList = ({ orderArrayItem }) => {
   const renderOrdersCell = useCallback((order, columnKey) => {
