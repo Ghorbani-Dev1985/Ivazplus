@@ -7,17 +7,17 @@ import Link from "next/link";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
-import { useRemoveProduct } from "src/hooks/useProducts";
+import { useRemoveCoupon } from "src/hooks/useCoupons";
 import ToLocalDateStringShort from "src/utils/ToLocalDateStringShort";
 
 const CouponsList = ({ couponArrayItem }) => {
-  const {mutateAsync} = useRemoveProduct();
+  const {mutateAsync} = useRemoveCoupon();
   const queryClient = useQueryClient();
-  const RemoveProductHandler = async (id) => {
+  const RemoveCouponHandler = async (id) => {
     try {
       const { message } = await mutateAsync(id);
       toast.success(message);
-      queryClient.invalidateQueries({ queryKey: ["getProducts"] });
+      queryClient.invalidateQueries({ queryKey: ["getCoupons"] });
     } catch (error) {
       if (error?.response?.data) {
         toast.error(error.response.data.message);
@@ -68,9 +68,9 @@ const CouponsList = ({ couponArrayItem }) => {
               </Link>
             </Button>
             <ConfirmModal
-              btnIcon={<BiTrash className="size-6 text-rose-500" />} titleText="حذف کد تخفیف" confirmBtnText="حذف کد تخفیف" confirmBtnHandler={() => RemoveProductHandler(coupon._id)}
+              btnIcon={<BiTrash className="size-6 text-rose-500" />} titleText="حذف کد تخفیف" confirmBtnText="حذف کد تخفیف" confirmBtnHandler={() => RemoveCouponHandler(coupon._id)}
             >
-              آیا برای حذف کد تخفیف <span className="text-rose-400">{coupon.title}</span> مطمعن هستید؟
+              آیا برای حذف کد تخفیف <span className="text-rose-400">{coupon.code}</span> مطمعن هستید؟
             </ConfirmModal>
           </div>
         );
