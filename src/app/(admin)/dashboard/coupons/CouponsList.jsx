@@ -3,7 +3,6 @@ import ConfirmModal from "@/UI/ConfimModal";
 import CustomTable from "@/UI/CustomTable";
 import { Button, Chip } from "@nextui-org/react";
 import { useQueryClient } from "@tanstack/react-query";
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
@@ -28,7 +27,7 @@ const CouponsList = ({ couponArrayItem }) => {
   const renderCouponsCell = useCallback((coupon, columnKey) => {
     const cellValue = coupon[columnKey];
     switch (columnKey) {
-      case "code": coupon.code
+      case "code": return coupon.code
         return 
       case "createdAt":
         return (

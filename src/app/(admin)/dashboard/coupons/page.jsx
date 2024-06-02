@@ -10,7 +10,6 @@ const Coupons = () => {
   const title = useTitle("محصولات | ایواز پلاس");
   const { data, isLoading } = useGetCoupons();
   const { coupons } = data || {};
-  console.log(coupons)
   if (isLoading) return <Loading />;
   if (coupons.length === 0)
     return <Alert alertText="هیچ کد تخفیفی یافت نشد"></Alert>;

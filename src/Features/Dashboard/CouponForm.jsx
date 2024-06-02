@@ -2,6 +2,7 @@ import Loading from "@/UI/Loading";
 import TextField from "@/UI/TextField";
 import {
   Button,
+  Chip,
   Radio,
   RadioGroup,
   Select,
@@ -20,7 +21,9 @@ const CouponForm = ({
   errors,
   handleSubmit,
   control,
-  getCategory,
+  type,
+  couponProducts,
+  exDate
 }) => {
   return (
     <form
@@ -97,6 +100,7 @@ const CouponForm = ({
               label=" نوع"
               orientation="horizontal"            
               color="primary"
+              defaultValue={type ? type : ""}
             >
               <Radio value="fixedProduct">
                 <span className="mr-1">قیمت ثابت </span>
@@ -131,7 +135,7 @@ const CouponForm = ({
               isMultiline={true}
               selectionMode="multiple"
               placeholder={
-                getCategory ? getCategory : "محصول را انتخاب نمایید"
+                couponProducts ? couponProducts.map(({title}) => { return (  <Chip color="primary" className="ml-1" key={title}>{title}</Chip> )} ) : "محصول را انتخاب نمایید"
               }
             >
               {products?.map(({ _id, title }) => {
@@ -147,7 +151,7 @@ const CouponForm = ({
       />
       {errors.productIds && (
         <span className="block text-right text-rose-500 my-3 text-base">
-          لطفا یک محصول را انتخاب نمایید
+          لطفا محصول را انتخاب نمایید
         </span>
       )}
       <Controller
@@ -167,6 +171,7 @@ const CouponForm = ({
               locale={persian_fa}
               calendarPosition="bottom-center"
               inputClass="textField-input dir-ltr"
+              value={exDate}
             />
           );
         }}
