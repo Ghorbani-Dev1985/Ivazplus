@@ -3,18 +3,22 @@ import {
   ModalContent,
   Button,
   useDisclosure,
+  ModalBody,
 } from "@nextui-org/react";
 import Image from "next/image";
-import { useForm } from "react-hook-form";
-import TextField from "../TextField";
+import React, { useState } from "react";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+import { useGetProducts } from "src/hooks/useProducts";
+import Loading from "../Loading";
+import SearchResultCard from "./SearchResultCard";
 const Search = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+  const [searchValue , setSearchValue] = useState("")
+  const { data, isLoading } = useGetProducts();
+  const { products } = data || {};
+   
+   const searchResult = searchValue ? products?.filter((product) => product.title.toLowerCase().includes(searchValue)) : [];
+  console.log(searchResult)
   return (
     <>
       <button
@@ -38,6 +42,7 @@ const Search = () => {
         onOpenChange={onOpenChange}
         size="5xl"
         radius="lg"
+        scrollBehavior="inside"
         classNames={{
           wrapper: "items-center",
           body: "py-6",
@@ -48,18 +53,9 @@ const Search = () => {
         <ModalContent className="w-full bg-transparent shadow-none">
           {(onClose) => (
             <>
+            <ModalBody>
               <div className="w-full flex-center gap-x-2">
-                <TextField
-                  name="identifier"
-                  placeholder="نام محصول مورد نظر خود را وارد نمایید"
-                  required
-                  register={register}
-                  customStyle="h-20 bg-white placeholder:text-xl"
-                  validationSchema={{
-                    required: "نام محصول مورد نظر خود را وارد نمایید",
-                  }}
-                  errors={errors}
-                />
+                <input placeholder="نام محصول مورد نظر خود را وارد نمایید" onChange={(e) => setSearchValue(e.target.value)} className="textField-input h-20 bg-white placeholder:text-xl"/>
                 <Button
                   isIconOnly
                   color="primary"
@@ -69,6 +65,16 @@ const Search = () => {
                   <HiMiniMagnifyingGlass className="size-14" />
                 </Button>
               </div>
+              {
+                isLoading ? <Loading /> : <div className={`${searchResult.length > 0 ? "grid" : "hidden"} grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-white gap-4 p-2 rounded-lg`}>{searchResult?.map((product) => {
+                  return (
+                    <React.Fragment key={product._id}>
+                      <SearchResultCard product={product} />
+                    </React.Fragment>
+                  );
+                })}</div>
+              }
+              </ModalBody>
             </>
           )}
         </ModalContent>

@@ -10,6 +10,12 @@ import ProductsBreadcrumb from "@/Features/Products/ProductsBreadcrumb";
 import { ToStringCookies } from "src/utils/ToStringCookies";
 export const dynamic = "force-dynamic"; // eq to {cache  : "no-store"} or SSR in pages directory
 
+export const metadata = {
+  title: "فروشگاه | ایواز پلاس",
+  description: "خرید آنلاین انواع لباس زنانه شامل مانتو، شلوار، کیف، کفش، شال و روسری از فروشگاه آنلاین ایواز پلاس و ارسال به سراسر ایران با بهترین قیمت و مناسب همه سلیقه‌ها.",
+  keywords: "فروشگاه ایواز,ایواز,ایوازپلاس,خرید لباس زنانه"
+ }
+
 const Products = async ({ searchParams }) => {
   const cookieStore = cookies();
   const strCookies = ToStringCookies(cookieStore);

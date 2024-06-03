@@ -14,7 +14,7 @@ import { useGetUser } from "src/hooks/useAuth";
 const Header = () => {
   const pathname = usePathname();
   const [submenuImg, setSubmenuImg] = useState("");
-  const {data , error , isPending} = useGetUser()
+  const {data , isPending} = useGetUser()
   const {user , cart} = data || {}
   return (
     <header>
@@ -23,15 +23,15 @@ const Header = () => {
         <div className="w-full flex-between py-4">
           <nav className="hidden lg:flex-center gap-x-3 text-xs font-bold">
             <ul className="flex items-center gap-3.5">
-               {MenuItems.map(({ id, mainNav, mainHref, subNav }) => {
+               {MenuItems.map(({ id, mainNav, englishTitle, subNav }) => {
               return (
                 <React.Fragment key={id}>
                   <li className="flex items-center group"><Link
-                    href={mainHref}
+                    href={`products/?category=${englishTitle}`}
                     onMouseEnter={() => setSubmenuImg("")}
                     className={`
                     ${
-                      pathname === mainHref
+                      pathname === englishTitle
                         ? "text-primary font-bold"
                         : "text-zinc-700"
                     } inline-flex items-center `}
@@ -117,7 +117,7 @@ const Header = () => {
             {/* Account */}
             <div className={`${isPending ? "blur-sm opacity-70" : "blur-0 opacity-100"} flex-center h-6 gap-x-2`}>
               {
-                user ? <Link href="/profile" className="flex-center gap-x-1 text-xs md:text-base"><HiMiniUserCircle className="hidden md:block md:size-8 fill-primary"/>{user.name}</Link> :
+               user&& user ? <Link href="/profile" className="flex-center gap-x-1 text-xs md:text-base"><HiMiniUserCircle className="hidden md:block md:size-8 fill-primary"/>{user.name}</Link> :
               <Link href="/authentication" className="flex-center">
                 <HiOutlineUser className="size-6" />
                 <span className="hidden md:block">حساب کاربری</span>

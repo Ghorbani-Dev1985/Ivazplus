@@ -2,7 +2,7 @@ const MenuItems = [
     {
         id: 1,
         mainNav: "لباس زنانه",
-        mainHref: "womenCloth",
+        englishTitle: "womenCloth",
         subNav: [
             {
                 id: 1,
@@ -63,7 +63,7 @@ const MenuItems = [
     {
         id: 2,
         mainNav: "کت و شلوار زنانه",
-        mainHref: "womenSuit",
+        englishTitle: "womenSuit",
         subNav: [
             {
                 id: 1,
@@ -82,19 +82,19 @@ const MenuItems = [
     {
         id: 3,
         mainNav: "ست زنانه",
-        mainHref: "womanSet",
+        englishTitle: "womanSet",
         subNav: []
     },
     {
         id: 4,
         mainNav: "شلوار زنانه",
-        mainHref: "womanPants",
+        englishTitle: "womanPants",
         subNav: []
     },
     {
         id: 5,
         mainNav: "کیف و کفش زنانه",
-        mainHref: "WomenBagsShoes",
+        englishTitle: "WomenBagsShoes",
         subNav: [
             {
                 id: 1,

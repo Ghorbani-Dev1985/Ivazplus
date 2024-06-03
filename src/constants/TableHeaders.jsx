@@ -232,7 +232,7 @@ export const couponsListTableTHeads = [
   },
   {
     id: "productIds",
-    label: "محصولات"
+    label: " شامل محصولات"
   },
   {
     id: "amount",
