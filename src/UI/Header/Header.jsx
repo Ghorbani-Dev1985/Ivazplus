@@ -127,7 +127,7 @@ const Header = () => {
             </div>
             {/* Shop Cart */}
             <div className="flex-center gap-x-2">
-              <ShoppingCart cartItemCount={cart ? cart.payDetail.productIds.length : 0}/>
+              <ShoppingCart cartItemCount={cart ? cart.payDetail.productIds.length : 0} cart={cart}/>
             </div>
           </section>
         </div>

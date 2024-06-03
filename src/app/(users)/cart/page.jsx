@@ -46,7 +46,6 @@ const CartPage = () => {
                 cart.productDetail.map((item) => {
                   return (
                     <React.Fragment key={item._id}>
-                      {" "}
                       <CartItem cartItem={item} />
                     </React.Fragment>
                   );

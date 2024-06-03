@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Chip } from "@nextui-org/react";
+import { Chip, Divider } from "@nextui-org/react";
 import Image from "next/image";
 import { HiXMark } from "react-icons/hi2";
-const Drawer = ({ children, textIcon, imageHref, text, chipNumber, icon }) => {
+const Drawer = ({ children, textIcon, imageHref, headerText ,  text, chipNumber, icon }) => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   return (
     <>
@@ -46,11 +46,15 @@ const Drawer = ({ children, textIcon, imageHref, text, chipNumber, icon }) => {
         <div
           className={`${
             isOpenDrawer ? "right-0" : "-right-[30rem]"
-          } bg-white w-full max-w-[18rem] h-full fixed top-0 p-6 rounded-tl-lg rounded-bl-lg overflow-auto z-50 transition-all ease-linear duration-500`}
+          } bg-white w-full max-w-[22rem] h-full fixed top-0 p-6 rounded-tl-lg rounded-bl-lg overflow-auto z-50 transition-all ease-linear duration-500`}
         >
-         <div onClick={() => setIsOpenDrawer((prev) => !prev)} className="flex items-center justify-end cursor-pointer">
+          <div className="flex-between">
+          <p> {headerText}</p>
+         <div onClick={() => setIsOpenDrawer((prev) => !prev)} className="cursor-pointer">
          <HiXMark className="size-6"/>
          </div>
+          </div>
+         <Divider className="my-3"/>
           {children}
         </div>
       </section>

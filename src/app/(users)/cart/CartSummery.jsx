@@ -1,4 +1,4 @@
-import { createPayment } from "@/Services/PaymentService";
+import { CreateOrder } from "@/Services/OrderService";
 import Loading from "@/UI/Loading";
 import { Button } from "@nextui-org/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const CartSummery = ({ payDetail }) => {
   const { totalOffAmount, totalPrice, totalGrossPrice } = payDetail;
-  const { isLoading, mutateAsync } = useMutation({ mutationFn: createPayment });
+  const { isLoading, mutateAsync } = useMutation({ mutationFn: CreateOrder });
   const queryClient = useQueryClient();
 
   const CreatePaymentHandler = async () => {
