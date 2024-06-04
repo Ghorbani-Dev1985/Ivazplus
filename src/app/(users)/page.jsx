@@ -3,6 +3,7 @@ import ContactUs from "@/Features/Home/ContactUs";
 import HeroHeader from "@/Features/Home/HeroHeder";
 import Instagram from "@/Features/Home/Instagram";
 import NewProductSlider from "@/Features/Home/NewProductSlider";
+import SalesProductSlider from "@/Features/Home/SalesProductSlider";
 import SecondCategories from "@/Features/Home/SecondCategories";
 
 
@@ -22,6 +23,7 @@ const HomePage = async () => {
       <Categories />
       <NewProductSlider />
       <SecondCategories />
+      <SalesProductSlider />
       <ContactUs />
       <Instagram />
     </>

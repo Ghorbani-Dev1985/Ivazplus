@@ -11,10 +11,11 @@ import Loading from "@/UI/Loading";
 const NewProductSlider = () => {
   const { data, isLoading } = useGetProducts();
   const { products } = data || {};
-  console.log(products?.length === 0)
+  const salesProducts = products?.filter((product) => product.discount > 0)
+  console.log(salesProducts)
   return (
-    <section className="sm:container lg:grid lg:grid-cols-12 gap-x-28 my-16">
-      <div className="lg:col-span-4 flex flex-col items-center gap-y-4 lg:mr-60">
+    <section className="lg:grid lg:grid-cols-12 gap-x-28 my-16 overflow-hidden">
+      <div className="lg:col-span-4 flex flex-col items-center justify-center gap-y-4 xl:mr-60">
         <Image
           width={79}
           height={85}
@@ -42,9 +43,9 @@ const NewProductSlider = () => {
           </button>
         </div>
       </div>
-      <div className="lg:col-span-8 flex flex-col justify-center relative py-12 px-2 md:px-0 before:hidden before:lg:block before:content-[''] before:w-full before:h-full before:absolute before:right-24 before:bg-gray-100 before:rounded-3xl">
+      <div className="lg:col-span-8 flex flex-col justify-center relative py-12 px-2 md:px-0 before:hidden before:lg:block before:content-[''] before:w-full before:h-full before:absolute before:right-24 before:bg-gray-100 before:rounded-tr-3xl before:rounded-br-3xl">
         {
-            products?.length === 0 ? <Loading /> :  
+            isLoading ? <Loading /> :  
         <ProductSlider
           SwiperNextBtnID="#NewCoursesSwiperNextBtn"
           SwiperPrevBtnID="#NewCoursesSwiperPrevBtn"
