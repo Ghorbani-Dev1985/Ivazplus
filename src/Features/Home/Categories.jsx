@@ -12,9 +12,9 @@ const Categories = () => {
           <CategoryItem href="#" image="cat02.jpg" title="ست" />
         </div>
         <div className="flex-between gap-4">
-          <CategoryItem href="#" image="cat03.jpg" title="کالکشن بهار" />
-          <CategoryItem href="#" image="cat04.jpg" title="کالکشن بهار" />
-          <CategoryItem href="#" image="cat05.jpg" title="کالکشن بهار" />
+          <CategoryItem href="#" image="cat03.jpg" title="کلاه" />
+          <CategoryItem href="#" image="cat04.jpg" title="کیف" />
+          <CategoryItem href="#" image="cat05.jpg" title="کت و شلوار" />
         </div>
       </div>
     </section>
