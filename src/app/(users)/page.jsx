@@ -1,3 +1,4 @@
+import BlogSection from "@/Features/Home/BlogSection";
 import Categories from "@/Features/Home/Categories";
 import ContactUs from "@/Features/Home/ContactUs";
 import HeroHeader from "@/Features/Home/HeroHeder";
@@ -24,6 +25,7 @@ const HomePage = async () => {
       <NewProductSlider />
       <SecondCategories />
       <SalesProductSlider />
+      <BlogSection />
       <ContactUs />
       <Instagram />
     </>
