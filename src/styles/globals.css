@@ -19,6 +19,9 @@
   img {
     border-radius: 20px;
   }
+  p{
+    @apply leading-8 text-justify
+  }
   /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {

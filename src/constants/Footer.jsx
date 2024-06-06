@@ -48,12 +48,12 @@ const footerMenusItems = [
             {
                 id: 4,
                 title: " داستان ما",
-                href: ""
+                href: "/aboutUs"
             },
             {
                 id: 5,
                 title: " محصولات",
-                href: ""
+                href: "/products"
             }
         ]
     },
