@@ -4,7 +4,7 @@ import { BreadcrumbItem } from "@nextui-org/react";
 import Image from "next/image";
 import useTitle from "src/hooks/useTitle";
 
-const ContactUs = () => {
+const AboutUs = () => {
     const title = useTitle("داستان ما | ایواز پلاس")
     return (
         <>
@@ -41,4 +41,4 @@ const ContactUs = () => {
      );
 }
  
-export default ContactUs;
+export default AboutUs;
