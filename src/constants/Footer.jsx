@@ -69,22 +69,22 @@ const footerMenusItems = [
             {
                 id: 2,
                 title: " انتقادات و پیشنهادات",
-                href: ""
+                href: "/contactUs"
             },
             {
                 id: 3,
                 title: "روشهای ارسال و هزینه‌ها",
-                href: ""
+                href: "/sendCosts"
             },
             {
                 id: 4,
                 title: "  پیگیری سفارشات",
-                href: ""
+                href: "/profile"
             },
             {
                 id: 5,
                 title: " پرسش‌های متداول",
-                href: ""
+                href: "/faq"
             }
         ]
     },
