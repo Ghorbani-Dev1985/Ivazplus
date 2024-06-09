@@ -95,7 +95,7 @@ const footerMenusItems = [
             {
                 id: 1,
                 title: "شرایط مرجوعی و قوانین",
-                href: ""
+                href: "/returnRules"
             },
             {
                 id: 2,

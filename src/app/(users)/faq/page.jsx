@@ -12,10 +12,11 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import useTitle from "src/hooks/useTitle";
 
 const Faq = () => {
+    const title = useTitle("سوالات متداول | ایواز پلاس")
     const [faqTitle , setFaqTitle] = useState("")
-    console.log(faqTitle)
   return (
     <>
       <AppBreadcrumb>
