@@ -100,12 +100,12 @@ const footerMenusItems = [
             {
                 id: 2,
                 title: " راهنمای پرداخت",
-                href: ""
+                href: "/registerOrder"
             },
             {
                 id: 3,
                 title: " نحوه ثبت سفارش ",
-                href: ""
+                href: "/registerOrder"
             }
         ]
     },

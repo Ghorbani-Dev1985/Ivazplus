@@ -1,7 +1,6 @@
 "use client";
 import AppBreadcrumb from "@/UI/AppBreadcrumb";
 import { BreadcrumbItem, Chip, Divider } from "@nextui-org/react";
-import Link from "next/link";
 import { BiSolidCircle } from "react-icons/bi";
 import useTitle from "src/hooks/useTitle";
 
