@@ -1,14 +1,16 @@
 "use client";
-import ProductForm from "@/Features/Dashboard/ProductForm";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useGetCategories } from "src/hooks/useCategories";
 import { useAddProduct } from "src/hooks/useProducts";
 import useTitle from "src/hooks/useTitle";
+import ProductForm from "@/Features/Dashboard/ProductForm";
+import { useRouter } from "next/navigation";
 
 const CreateProduct = () => {
   const title = useTitle("افزودن محصول | ایواز پلاس");
+  const router = useRouter()
   const { data } = useGetCategories();
   const { categories } = data || {};
   const {
@@ -25,7 +27,8 @@ const CreateProduct = () => {
       const { message } = await mutateAsync({ ...data, tags });
       toast.success(message);
       reset();
-      setTags([])
+      setTags([]);
+      router.push("/dashboard/products")
     } catch (error) {
       if (error?.response?.data) {
         toast.error(error.response.data.message);

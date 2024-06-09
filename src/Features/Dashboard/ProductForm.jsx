@@ -33,8 +33,8 @@ const ProductForm = ({
             message: "حداقل ۵ کاراکتر وارد نمایید  ",
           },
           maxLength: {
-            value: 25,
-            message: "حداکثر ۲۵ کاراکتر وارد نمایید",
+            value: 50,
+            message: "حداکثر ۵۰ کاراکتر وارد نمایید",
           },
         }}
         errors={errors}
@@ -52,8 +52,8 @@ const ProductForm = ({
             message: "حداقل ۵ کاراکتر وارد نمایید  ",
           },
           maxLength: {
-            value: 50,
-            message: "حداکثر ۵۰ کاراکتر وارد نمایید",
+            value: 200,
+            message: "حداکثر ۲۰۰ کاراکتر وارد نمایید",
           },
         }}
         errors={errors}
@@ -71,8 +71,8 @@ const ProductForm = ({
             message: "حداقل ۵ کاراکتر وارد نمایید  ",
           },
           maxLength: {
-            value: 15,
-            message: "حداکثر ۱۰ کاراکتر وارد نمایید",
+            value: 50,
+            message: "حداکثر ۵۰ کاراکتر وارد نمایید",
           },
         }}
         errors={errors}

@@ -30,6 +30,10 @@ function ProductSlider({children , SwiperNextBtnID, SwiperPrevBtnID }) {
           slidesPerView: 4,
           spaceBetween: 50,
         },
+        1440: {
+          slidesPerView: 5,
+          spaceBetween: 30,
+        },
       }}
       modules={[FreeMode, Autoplay , Navigation]}
       autoplay={{

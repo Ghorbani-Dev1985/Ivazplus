@@ -18,7 +18,7 @@ const SalesProductSlider = () => {
       <div className="flex-center my-10">
         <p className="text-primary font-semibold text-3xl "> محصولات با تخفیفی ایواز</p>
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center mb-8">
         {
             isLoading ? <Loading /> :  
         <ProductSlider
@@ -27,7 +27,7 @@ const SalesProductSlider = () => {
         >
           { 
           salesProducts?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-            .slice(0, 10)
+            .slice(0, 15)
             .map((product) => {
               return (
                 <SwiperSlide className="rounded-2xl" key={product._id}>
@@ -45,14 +45,14 @@ const SalesProductSlider = () => {
             id="NewCoursesSwiperNextBtn"
             className="flex-center size-10 lg:size-14 rounded-full shrink-0 bg-white border border-gray-200 hover:text-primary text-gray-400 transition-colors"
           >
-            <HiOutlineChevronRight className="size-6 lg:size-10" />
+            <HiOutlineChevronRight className="size-6 lg:size-8" />
           </button>
           <button
             type="button"
             id="NewCoursesSwiperPrevBtn"
             className="flex-center size-10 lg:size-14 rounded-full shrink-0 bg-white border border-gray-200 hover:text-primary text-gray-400 transition-colors"
           >
-            <HiOutlineChevronLeft className="size-6 lg:size-10" />
+            <HiOutlineChevronLeft className="size-6 lg:size-8" />
           </button>
         </div>
       </div>

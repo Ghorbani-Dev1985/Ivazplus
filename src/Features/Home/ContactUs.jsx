@@ -5,7 +5,7 @@ import Link from "next/link";
 const ContactUs = () => {
     return ( 
         <section className="container my-16 flex-center">
-            <RippleLink href="/ContactUs">
+            <RippleLink href="/contactUs">
                 <Image
           width={1280}
           height={150}

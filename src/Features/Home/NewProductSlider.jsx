@@ -30,16 +30,16 @@ const NewProductSlider = () => {
           <button
             type="button"
             id="NewCoursesSwiperNextBtn"
-            className="flex-center size-10 lg:size-14 rounded-full shrink-0 border border-gray-100 hover:text-primary text-gray-400 transition-colors"
+            className="flex-center size-10 lg:size-14 rounded-full shrink-0 border border-gray-200 hover:text-primary text-gray-400 transition-colors"
           >
-            <HiOutlineChevronRight className="size-6 lg:size-10" />
+            <HiOutlineChevronRight className="size-6 lg:size-8" />
           </button>
           <button
             type="button"
             id="NewCoursesSwiperPrevBtn"
-            className="flex-center size-10 lg:size-14 rounded-full shrink-0 border border-gray-100 hover:text-primary text-gray-400 transition-colors"
+            className="flex-center size-10 lg:size-14 rounded-full shrink-0 border border-gray-200 hover:text-primary text-gray-400 transition-colors"
           >
-            <HiOutlineChevronLeft className="size-6 lg:size-10" />
+            <HiOutlineChevronLeft className="size-6 lg:size-8" />
           </button>
         </div>
       </div>

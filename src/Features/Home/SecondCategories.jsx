@@ -18,7 +18,7 @@ const SecondCategories = () => {
   });
   return (
     <section className="container flex-center gap-4 my-10">
-      <RippleLink href="">
+      <RippleLink href="/products?category=womanSet">
         <Image
           width={1052}
           height={370}
@@ -36,7 +36,7 @@ const SecondCategories = () => {
           }`}
         />
       </RippleLink>
-      <RippleLink href="">
+      <RippleLink href="/products?category=sales">
         <Image
           width={1052}
           height={370}

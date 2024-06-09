@@ -96,6 +96,7 @@ const Header = () => {
               آدرس فروشگاه
             </Link>
           </nav>
+          <Link href="/">
           <Image
             width={79}
             height={85}
@@ -104,7 +105,8 @@ const Header = () => {
             blurDataURL="/images/logo/logo.svg"
             src="/images/logo/logo.svg"
             className="h-12 md:h-auto rounded-none"
-          />
+            />
+            </Link>
           {/* Icons */}
           <section className="flex-center gap-x-1.5 md:gap-x-3">
             {/* MobileNav */}

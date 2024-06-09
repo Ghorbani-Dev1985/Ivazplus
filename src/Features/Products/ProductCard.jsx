@@ -7,8 +7,8 @@ const ProductCard = ({ product , home}) => {
   const { slug, imageLink, title, price, countInStock, discount, offPrice } =
     product;
   return (
-    <div className="flex flex-col gap-y-5">
-      <Link href={`products/${slug}`}>
+    <div className="w-full max-w-56 flex flex-col gap-y-5">
+      <Link href={`products/${slug}`} className="flex-center">
         <Image
           width={222}
           height={297}
